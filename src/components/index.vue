@@ -38,19 +38,19 @@
                                 <div class="invalid-feedback"> {{this.post.errors.password}} </div>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text"><i class='bx bxs-lock-alt box-icon'></i></span>
+                                <span class="input-group-text"><i class='bx bxs-lock box-icon'></i></span>
                                 <input type="password" :class="`form-control input-radius ${this.post.errors.conPassword ? 'is-invalid' : ''}`" placeholder="Confirm Password" v-model="post.conPassword">
                                 <div class="invalid-feedback"> {{this.post.errors.conPassword}} </div>
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">I agree to the  <router-link to="/" class="listbusiness"> Terms and Conditions </router-link> </label>
+                                <input type="checkbox" class="form-check-input" id="flexCheckDefault" value="flexCheckDefault"  v-model="checkbox" />
+                                <label class="form-check-label" for="flexCheckDefault"> I agree to the  <router-link to="" class="listbusiness"> Terms and Conditions </router-link> </label>
                             </div>
                             <div class="d-grid gap-2 col-12 mx-auto">
                                 <button type="submit" class="btn btn-success fw-bold">Sign Up</button>
                             </div>
                             <p class="mt-3 text-center"> 
-                                <router-link to="/" class="listbusiness"> List business on diaspora nigeria </router-link> 
+                                <router-link to="" class="listbusiness"> List business on diaspora nigeria </router-link> 
                             </p>
                         </form>
                     </div>
@@ -65,7 +65,7 @@
 <script>
     import Header from './header.vue';
     import Footer from './footer.vue';
-    import validateregister from '../validation/validateregister';
+    import validateregister from '../validation/index';
 
     export default {
         name: "indexPage",
@@ -120,3 +120,8 @@
         },
     }
 </script>
+
+<style scoped>
+    .btn { border-radius:0.375rem; }
+    .bx { font-size:20px; }
+</style>

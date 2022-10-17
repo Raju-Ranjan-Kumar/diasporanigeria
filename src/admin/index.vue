@@ -5,15 +5,15 @@
             <div class="signup ">
                 <h2 class="login-box-hed ">Administrator</h2>
                 <div class="contant">
-                    <form @submit.prevent="submitData" method="post">
+                    <form @submit.prevent="submitData" @input="validate" method="post" novalidate>
                         <div class="input-group mb-4">
-                            <span class="input-group-text" id="basic-addon1"><i class='bx bx-user box-icon'></i></span>
-                            <input type="text" :class="`form-control ${this.post.errors.username ? 'is-invalid' : ''}`" placeholder="Username" v-model="post.username">
+                            <span class="input-group-text" id="basic-addon1"><i class='bx bxs-user box-icon'></i></span>
+                            <input type="text" :class="`form-control input-radius ${this.post.errors.username ? 'is-invalid' : ''}`" placeholder="Username" v-model="post.username">
                             <div class="invalid-feedback"> {{this.post.errors.username}} </div>
                         </div>
                         <div class="input-group mb-4">
-                            <span class="input-group-text" id="basic-addon1"><i class='bx bx-lock-alt box-icon'></i></span>
-                            <input type="password" :class="`form-control ${this.post.errors.password ? 'is-invalid' : ''}`" placeholder="Password" v-model="post.password">
+                            <span class="input-group-text" id="basic-addon1"><i class='bx bxs-lock box-icon'></i></span>
+                            <input type="password" :class="`form-control input-radius ${this.post.errors.password ? 'is-invalid' : ''}`" placeholder="Password" v-model="post.password">
                             <div class="invalid-feedback"> {{this.post.errors.password}} </div>
                         </div>
                         <div class="d-grid">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import validatindex from './validation/validateindex';
+    import validatindex from './validation/index';
 
     export default {
         name: 'AdminIndex',
@@ -44,16 +44,21 @@
             }
         },
         methods:{
-            submitData(){
-                const {isInvalid, errors} = validatindex({
+            validate() {
+                const { isInvalid, errors } = validatindex({
                     username: this.post.username,
                     password: this.post.password,
                 });
 
-                if(isInvalid){
+                if (isInvalid) {
                     this.post.errors = errors;
-                }else{
-                    console.log("Login successfully");
+                    return false;
+                }
+                return true;
+            },
+            submitData(){
+                if (this.validate()) {
+                    console.log("values :",this.post.username,this.post.password,);
                 }
             }
         }
@@ -68,7 +73,8 @@
         line-height:21px; letter-spacing:1px; color:#3c8dbc; font-weight:500;
     }
     .login-admin-msg{ padding:40px 0px; text-align:center; font-size:14px; }
-
     .bttn { background-color:#3c8dbc; border-color:#367fa9; color:white; }
-    .bttn:hover { background-color:#367fa9 !important; color:white !important;; }
+    .bttn:hover { background-color:#367fa9 !important; color:white !important; }
+    .bx { font-size:20px; color:#3c8dbc; }
+    .input-radius { border-radius:3px; }
 </style>

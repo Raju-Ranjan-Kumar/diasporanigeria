@@ -4,14 +4,12 @@
 
         <nav class="navbar navbar-expand-lg nav-hedr navbar-static-top">
             <div class="container-fluid">
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item">
-                            <a class="navbar-brand" href="#"> <i class='bx bx-menu boxi-icon vr-middle'></i> </a>
+                            <router-link to="#" class="navbar-brand">
+                                <i class='bx bx-menu boxi-icon vr-middle'></i> 
+                            </router-link>
                         </li>
                     </ul>
                     <ul class="d-flex txt-dec-none">
@@ -26,7 +24,7 @@
                         </li>
                         <li>
                             <router-link to="/" class="text-light ms-1 vr-middle header-text">
-                                <i class='bx bx-globe boxi-icon vr-middle'></i> Visit Website
+                                <i class='bx bx-desktop boxi-icon vr-middle'></i> Visit Website
                             </router-link>
                         </li>
                         <li class="nav-item dropdown">
@@ -60,7 +58,7 @@
             return {
                 isActive: false,
             };
-        },
+        }
     }
 </script>
 
@@ -69,7 +67,7 @@
     .main-header .logo { font-weight: 600;}
     .header-route { color:white; font-size:20px; text-decoration:none;}
     .nav-hedr { transition:margin-left .3s ease-in-out; margin-bottom:0; border-radius:0; margin-left:230px; border:none; min-height:50px;}
-    .txt-dec-none { text-decoration:none;  list-style:none; }
+    .txt-dec-none { text-decoration:none; list-style:none; }
     ul.txt-dec-none{ margin-bottom: 0rem; }
     .txt-dec-none li{ padding: 8px 12px; }
     .boxi-icon { font-size:20px; color:white; font-weight:normal !important;}

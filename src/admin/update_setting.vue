@@ -16,7 +16,7 @@
                 </section>
                 <section class="content">
                     <div class="box box-default">
-                        <form name="frm" method="POST" enctype="multipart/form-data" action="#" onsubmit="return validate(this)">
+                        <form @submit.prevent="update" method="post" novalidate>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <input type="submit" value="Enviar" class="button"/> &nbsp;&nbsp;
+                                <button type="submit" class="btn btn-success btn-sm">Update</button>
                             </div>
                         </form>
                     </div>
@@ -66,16 +66,21 @@
 
     export default {
         name: "updateSetting",
-        components: { Header, Menu, Footer }
+        components: { Header, Menu, Footer },
+        methods:{
+            update(){
+                console.log("Successfully update");
+            }
+        }
     }
 </script>
 
 <style scoped>
     .listpage h4 { font-size:20px; text-transform:uppercase; font-weight:800;}
+    .form-group { margin-bottom:12px; }
     label { margin-bottom:5px; font-weight:bold; font-size:14px; }
-    .margin-t-b { margin-top:10px; margin-bottom:10px; }
-    .button { background:#337ab7 none repeat scroll 0 0; border:medium none; border-radius:3px; color:#fff; padding:5px 10px;}
     .form-control { font-size:14px; }
-    .form-group { margin-bottom:15px; }
+    .margin-t-b { margin:5px 0px; }
+    .button { background:#337ab7 none repeat scroll 0 0; border:medium none; border-radius:3px; color:#fff; padding:5px 10px;}
     .box-title { font-size:12px; color:#a94442; }
 </style>

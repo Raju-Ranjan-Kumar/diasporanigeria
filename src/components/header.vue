@@ -10,7 +10,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex ms-auto" @submit.prevent="submitNumber" @input="validate" method="post">
+                <div class="d-flex ms-auto" @input="validate">
                     <div class="">
                         <vue-tel-input :class="` ${this.post.errors.phone ? 'is-invalid' : ''}`" v-model="post.phone" @input="onInput"></vue-tel-input>
                         <div class="invalid-feedback"> {{this.post.errors.phone}} </div>
@@ -22,15 +22,15 @@
                         <router-link to="/forgot_password" class="f-password">Forgot Password?</router-link>
                     </div>
 
-                    <button class="btn hedr-btn" type="submit">Login</button>
-                </form>
+                    <button class="btn hedr-btn" type="submit" v-on:click="submitNumber()">Login</button>
+                </div>
             </div>
         </div>
     </nav>
 </template>
 
 <script>
-    import validateheader from '../validation/validateheader';
+    import validateheader from '../validation/header';
 
     export default {
         name: 'headerPage',
@@ -63,7 +63,7 @@
             },
             submitNumber() {
                 if (this.validate()) {
-                    console.log("Login successfully");
+                    console.log("values :",this.post.phone,this.post.password,);
                 }
             }
         }
@@ -71,5 +71,6 @@
 </script>
 
 <style scoped>
-    .vue-tel-input { height:33px; width:235px; border-radius:0px; border:1px solid #050505; color:#000; background:#fff; }
+    .vue-tel-input { height:35px; width:232px; border:1px solid #ced4da; color:#000; background:#fff; }
+    .navbar-collapse { padding:8px 0px; }
 </style>

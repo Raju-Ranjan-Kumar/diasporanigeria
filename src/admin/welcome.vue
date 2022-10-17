@@ -19,7 +19,7 @@
                                 <i class='bx bx-group'></i>
                                 <ion-icon name="contact"></ion-icon>
                             </div>
-                            <a href="#" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></a>
+                            <router-link to="/" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
                         </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
@@ -31,7 +31,7 @@
                             <div class="icon">
                                 <i class='bx bx-bar-chart'></i>
                             </div>
-                            <a href="#" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></a>
+                            <router-link to="/" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
                         </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
@@ -43,7 +43,7 @@
                             <div class="icon">
                                 <i class='bx bx-bar-chart'></i>
                             </div>
-                            <a href="#" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i> </a>
+                            <router-link to="/" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i> </router-link>
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">Recently Add Users </h3>
                                 <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"> <i class='bx bx-minus vr-bt fs-5 fw-bold'></i> </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"> <i class='bx bx-plus vr-bt fs-5 fw-bold'></i> </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"> <i class='bx bx-minus vr-align-btm fs-5'></i> </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"> <i class='bx bx-plus vr-align-btm fs-5'></i> </button>
                                 </div>
                             </div>
                             <div class="box">
@@ -73,20 +73,28 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>asas</td>
-                                                <td>sasas</td>
-                                                <td>sss</td>
-                                                <td>ssss</td>
-                                                <td>asss</td>
-                                                <td>sadsdsd</td>
+                                                <td>1</td>
+                                                <td>Oladayo</td>
+                                                <td>Success</td>
+                                                <td>kamardeenoladayo@gmail.com</td>
+                                                <td>+27 798328409</td>
+                                                <td>2022-10-06 09:15:01</td>
                                             </tr>
                                             <tr>
-                                                <td>asas</td>
-                                                <td>sasas</td>
-                                                <td>sss</td>
-                                                <td>ssss</td>
-                                                <td>asss</td>
-                                                <td>sadsdsd</td>
+                                                <td>2</td>
+                                                <td>Opeoluwa</td>
+                                                <td>Solaja</td>
+                                                <td>adeolaolubusoye@gmail.com</td>
+                                                <td>+1 7806606121</td>
+                                                <td>2022-10-05 12:05:35</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Dubaidenis</td>
+                                                <td>Mamba</td>
+                                                <td>dubaidenis@gmail.com</td>
+                                                <td>+1 4253899505</td>
+                                                <td>2022-10-05 03:30:02</td>
                                             </tr>
                                         </tbody>
                                         <tfoot> </tfoot>
@@ -94,14 +102,13 @@
                                 </div>
                             </div>
                             <div class="box-footer text-center">
-                                <a href="#" class="uppercase"> more records</a>
+                                <RouterLink to="" class="mor-rec"> More records </RouterLink>
                             </div>
                         </div>
                     </section>
                 </div>
             </section>
         </div>
-        <div class="control-sidebar-bg"></div>
     </div>
 
     <Footer></Footer>
@@ -119,6 +126,11 @@
 </script>
 
 <style scoped>
-    .bx-plus{transform: rotate(45deg); }
-    .vr-bt{  margin-bottom:0; padding-bottom:0; vertical-align:bottom;}
+    .bx-plus { transform:rotate(45deg); font-weight:bold; }
+    .vr-align-btm { margin-bottom:0; padding-bottom:0; vertical-align:bottom; }
+    .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+        border:1px solid #dee2e6;
+    }
+    .mor-rec { color:#3c8dbc; text-decoration:none; }
+    .mor-rec:hover { text-decoration:underline; }
 </style>

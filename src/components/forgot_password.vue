@@ -5,13 +5,15 @@
         <div class="row align-item-center">
             <div class="col-7 leftDiv">
                 <p class="fw-bold">DIASPORA NIGERIA IS AN ONLINE REALTIME PLATFORM FOR <br> NIGERIANS IN THE DIASPORA .</p>
-                <span>Meet Nigerians With Common Interests In Your Location</span>
+                <span> Meet Nigerians With Common Interests In Your Location </span>
             </div>
             
             <div class="col-5 loginformmain">
                 <div class="login">
                     <div class="backdiv">
-                        <router-link to="/" class="back-p"> <i class='bx bx-chevron-left'></i> Back</router-link>
+                        <router-link to="/" class="back-p icon-text-center">
+                            <i class='bx bx-chevron-left'></i> <span>Back</span> 
+                        </router-link>
                     </div> 
                     <div class="forgoticon position-relative">
                         <img src="../assets/images/f-lock.png" class="position-absolute">
@@ -21,7 +23,7 @@
                             <h2 class="forgot-pas">Forgot Your Password</h2>
                             <p> Enter the mobile number associated with your account, and we'll help you get your password reset.</p>
                         </div>
-                        <form @submit.prevent="submitPhone" @input="validate" method="post">
+                        <form @submit.prevent="submitPhone" @input="validate" method="post" novalidate>
                             <div class="input-group mb-4">
                                 <vue-tel-input :class="`number-input ${this.forgot.errors.phone ? 'is-invalid' : ''}`" v-model="forgot.phone" @input="onInput"></vue-tel-input>
                                 <div class="invalid-feedback"> {{this.forgot.errors.phone}} </div>
@@ -42,7 +44,7 @@
 <script>
     import Header from './header.vue';
     import Footer from './footer.vue';
-    import validateFrgtPassword from '../validation/forgotpassword';
+    import valFrgtPassword from '../validation/forgot_password';
 
     export default {
         name: 'forgotPassword',
@@ -62,7 +64,7 @@
                 }
             },
             validate() {
-                const {isInvalid, errors} = validateFrgtPassword({
+                const {isInvalid, errors} = valFrgtPassword({
                     phone: this.forgot.phone,
                 });
 
@@ -80,3 +82,7 @@
         }
     }
 </script>
+
+<style scoped>
+    .btn { border-radius:0.375rem; }
+</style>
