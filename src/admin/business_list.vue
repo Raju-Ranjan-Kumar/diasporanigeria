@@ -82,7 +82,7 @@
                                                     <td class="text-center">
                                                         <div class="squaredFour">
                                                             <input type="checkbox" class="checkall" v-model="checkbox" />
-                                                            <label for="id"></label>
+                                                            <label for="checkall"></label>
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
@@ -98,14 +98,16 @@
                                                         </label>
                                                     </td>
                                                     <td class="text-center">
-                                                        <RouterLink to="/admin/business_addf" class="btn btn-primary"> <i class='bx bxs-pencil'></i> </RouterLink>
+                                                        <RouterLink to="/admin/business_addf" class="btn btn-primary">
+                                                            <i class='bx bxs-pencil'></i> 
+                                                        </RouterLink>
                                                     </td>
                                                 </tr>
                                                 <tr class="text-center">
                                                     <td class="text-center">
                                                         <div class="squaredFour">
                                                             <input type="checkbox" class="checkall" v-model="checkbox" />
-                                                            <label for="id"></label>
+                                                            <label for="checkbox"></label>
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
@@ -121,7 +123,9 @@
                                                         </label>
                                                     </td>
                                                     <td class="text-center">
-                                                        <RouterLink to="/admin/business_addf" class="btn btn-primary"> <i class='bx bxs-pencil'></i> </RouterLink>
+                                                        <RouterLink :to="{ path: '/admin/business_addf', component: 'businessAdd' }" class="btn btn-primary">
+                                                            <i class='bx bxs-pencil'></i> 
+                                                        </RouterLink>
                                                     </td>
                                                 </tr>
                                             </tbody>

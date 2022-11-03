@@ -16,31 +16,31 @@
                 </section>
                 <section class="content">
                     <div class="box box-default">
-                        <form @submit.prevent="update" method="post" novalidate>
+                        <form @submit.prevent="updateData" method="post" novalidate>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Mobile Number</label>
-                                            <input name="mobile" type="text" id="mobile" class='form-control' size="36" value="1234567" />
+                                            <input type="text" id="mobile" class='form-control' size="36" v-model ="update.mobile"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Telephone</label>
-                                            <input name="landline" type="text" id="landline" class='form-control' size="36" value="1234567">
+                                            <input type="text" id="landline" class='form-control' size="36" v-model ="update.telephone"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input name="email" type="text" id="email" class='form-control' size="36" value="asdfg@g.com" />
+                                            <input type="email" id="email" class='form-control' size="36" v-model ="update.email"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <textarea name="address" rows="5" cols="30" class='form-control'>User Address</textarea>
+                                            <textarea rows="5" cols="30" class='form-control' v-model ="update.address"> </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +52,6 @@
                     </div>
                 </section>
             </div>
-            <div class="control-sidebar-bg"></div>
         </div>
     </body>
 
@@ -67,9 +66,24 @@
     export default {
         name: "updateSetting",
         components: { Header, Menu, Footer },
+        data() {
+            return {
+                update: {
+                    mobile: "",
+                    telephone: "",
+                    email: "",
+                    address: ""
+                }
+            };
+        },
         methods:{
-            update(){
-                console.log("Successfully update");
+            updateData(){
+                this.axios.get("http://localhost:3000/update", {
+                    headers: {  'Content-Type': 'application/json', }
+                }).then((response) => {
+                    const results = response.data
+                    console.warn(results)
+                })
             }
         }
     }

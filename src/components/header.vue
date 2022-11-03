@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex ms-auto" @input="validate">
                     <div class="">
-                        <vue-tel-input :class="` ${this.post.errors.phone ? 'is-invalid' : ''}`" v-model="post.phone" @input="onInput"></vue-tel-input>
+                        <vue-tel-input :class="`${this.post.errors.phone ? 'is-invalid' : ''}`" v-model="post.phone" @input="onInput"></vue-tel-input>
                         <div class="invalid-feedback"> {{this.post.errors.phone}} </div>
                     </div>
 
@@ -71,6 +71,7 @@
 </script>
 
 <style scoped>
-    .vue-tel-input { height:35px; width:232px; border:1px solid #ced4da; color:#000; background:#fff; }
+    .vue-tel-input { height:35px; width:212px; font-size:0.9rem; border:1px solid #ced4da; color:#000; background:#fff; }
     .navbar-collapse { padding:8px 0px; }
+    .btn { --bs-btn-font-size: 0.9rem; }
 </style>

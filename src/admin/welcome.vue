@@ -19,7 +19,7 @@
                                 <i class='bx bx-group'></i>
                                 <ion-icon name="contact"></ion-icon>
                             </div>
-                            <router-link to="/" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
+                            <router-link to="" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
                         </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
@@ -31,7 +31,7 @@
                             <div class="icon">
                                 <i class='bx bx-bar-chart'></i>
                             </div>
-                            <router-link to="/" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
+                            <router-link to="" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
                         </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
@@ -43,22 +43,26 @@
                             <div class="icon">
                                 <i class='bx bx-bar-chart'></i>
                             </div>
-                            <router-link to="/" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i> </router-link>
+                            <router-link to="" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i> </router-link>
                         </div>
                     </div>
                 </div>
     
                 <div class="row">
                     <section class="col-lg-12 connectedSortable ui-sortable">
-                        <div class="box box-danger">
+                        <div class="box box-danger" v-if="!isRemove">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Recently Add Users </h3>
                                 <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"> <i class='bx bx-minus vr-align-btm fs-5'></i> </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"> <i class='bx bx-plus vr-align-btm fs-5'></i> </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" v-on:click="isHidden = !isHidden">
+                                        <i :class="{ 'bx bx-minus vr-align-btm fs-5 fw-bold': !isHidden, 'bx bx-plus vr-align-btm fs-5 fw-bold': isHidden }"> </i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove" v-on:click="isRemove = true">
+                                        <i class='bx bx-plus bx-multiply vr-align-btm fs-5'></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="box">
+                            <div class="box" v-if="!isHidden">
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -100,9 +104,9 @@
                                         <tfoot> </tfoot>
                                     </table>
                                 </div>
-                            </div>
-                            <div class="box-footer text-center">
-                                <RouterLink to="" class="mor-rec"> More records </RouterLink>
+                                <div class="box-footer text-center">
+                                    <RouterLink to="" class="mor-rec"> More records </RouterLink>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -120,13 +124,19 @@
     import Menu from './menu.vue';
 
     export default {
-    name: "welcomePage",
-    components: { Header, Footer, Menu }
-}
+        name: "welcomePage",
+        components: { Header, Footer, Menu },
+        data() {
+            return{
+                isHidden: false,
+                isRemove: false,
+            }
+        }
+    }
 </script>
 
 <style scoped>
-    .bx-plus { transform:rotate(45deg); font-weight:bold; }
+    .bx-multiply { transform:rotate(45deg); font-weight:bold; }
     .vr-align-btm { margin-bottom:0; padding-bottom:0; vertical-align:bottom; }
     .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
         border:1px solid #dee2e6;

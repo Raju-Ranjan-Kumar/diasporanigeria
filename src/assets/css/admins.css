@@ -1,0 +1,80 @@
+/* welcome css */
+/* .bx-multiply { transform:rotate(45deg); font-weight:bold; }
+.vr-align-btm { margin-bottom:0; padding-bottom:0; vertical-align:bottom; }
+.mor-rec { color:#3c8dbc; text-decoration:none; }
+.mor-rec:hover { text-decoration:underline; } */
+
+/* update_setting css */
+/* .margin-t-b { margin:5px 0px; }
+.button { background:#337ab7 none repeat scroll 0 0; border:medium none; border-radius:3px; color:#fff; padding:5px 10px; }
+.box-title { font-size:13px; color:#a94442; } */
+
+/* business_list css */
+/* table th{ font-size:12px; }
+.listpage h4 { font-size:20px; text-transform:uppercase; font-weight:800;}
+.width { width:200px; }
+.p-b { padding-bottom:10px; }
+.input-sm { height:30px; padding:5px 10px; font-size:12px; line-height:1.5; border-radius:3px !important; }
+.csr-dflt { cursor:default; font-size:14px; align-self:center;}
+.add-business { font-size:14px; font-weight:bold; padding:6px 8px; }
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+    border:1px solid #dee2e6;
+}  */
+
+/* business_addf css */
+/* label { margin-bottom:5px; font-weight:bold; font-size:14px; }
+.form-group { margin-bottom:12px; }
+.form-control { font-size:14px; }
+.height { height:36px; }
+.text-size { font-size:12px; font-weight:bold; } */
+
+/* send_notification css */
+/* .form-select option { font-size:14px; } */
+
+/* footer css */
+/* .main-footer { position:fixed; bottom:0; width:100%; } */
+
+/* header css */
+/* .main-header { background-color:#3c8dbc; }
+.main-header .logo { font-weight: 600;}
+.header-route { color:white; font-size:20px; text-decoration:none;}
+.header-route:hover { color:white; }
+.nav-hedr { transition:margin-left .3s ease-in-out; margin-bottom:0; border-radius:0; margin-left:230px; border:none; min-height:50px;}
+.txt-dec-none { text-decoration:none; list-style:none; }
+ul .txt-dec-none { margin-bottom: 0rem; }
+.txt-dec-none li { padding:8px 12px; }
+.img-hedr { border-radius:0px; height:25px; width:25px; }
+.vr-middle { vertical-align:middle; text-decoration:none;}
+.header-text { font-size:14px; }
+.menu-left { width:15rem !important; left:-195px !important; --bs-dropdown-link-hover-bg:none !important; }
+.menu-left>li>a { font-size:12px; color:#444 !important; text-align:center; text-decoration:none; }
+.dropdown-menu { left:-100px; width:18rem; --bs-dropdown-padding-x:none; --bs-dropdown-link-hover-bg:#3c8dbc; border:1px solid #ccc; }
+.dropdown-menu>li.txt { color:#444444; font-size:14px; }
+.dropdown-toggle::after { display:none; }
+.signout-container { background-color:#3c8dbc; }
+.signout-img { height:90px; width:90px; }
+ul li div p { color:#fff; font-size:17px; margin-top:10px; }
+ul li div p small { font-size:12px; } */
+
+/* index css */
+/* .itm-center { width:35%; top:50%; left:50%; transform:translate(-50%, -50%); }
+.signup { background-color:#ffffff; box-shadow:0px 0px 1px #666 !important; border-radius:8px; }
+.login-box-hed { margin:0; text-align:center; padding:25px 20px 30px 20px; font-size:22px; text-transform:uppercase;
+    line-height:21px; letter-spacing:1px; color:#3c8dbc; font-weight:500;
+}
+.login-admin-msg { padding:40px 0px; text-align:center; font-size:14px; color:#666; }
+.bttn { background-color:#3c8dbc; border-color:#367fa9; color:white; }
+.bttn:hover { background-color:#367fa9 !important; color:white !important; } */
+
+/* menu css */
+/* .sidebar-bg-col { background-color:#222d32; }
+.u-name { color:white; font-size:14px;}
+.r-link { color:#b8c7ce; border-left:3px solid transparent; text-decoration:none; display:flex; align-items:center; justify-items:center;}
+.r-link:hover { border-left:3px solid #3c8dbc; background-color:#4b646f; color:white; }
+.sr-link { color:#b8c7ce; text-decoration:none; }
+.bx-radio-circle { font-size:20px;}
+.clicked { transform: rotate(-90deg); transition:transform 0.3s ease-in-out; }
+.sub-menu { background-color:#1a2226; color:white; animation: .3s subMenu; }
+@keyframes subMenu {
+    0% { transform: translateY(-50%) scaleY(0); }
+} */

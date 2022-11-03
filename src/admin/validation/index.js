@@ -18,8 +18,8 @@ const validatindex = (data) => {
     if((password.length > 0) && (password.length < 8)){
         errors.password = "*Password must be minimum 8 characters"
     }
-    if(password.length > 16){
-        errors.password = "*Password must be maximum 16 characters"
+    if(password.length > 18){
+        errors.password = "*Password must be maximum 18 characters"
     }
 
     return{

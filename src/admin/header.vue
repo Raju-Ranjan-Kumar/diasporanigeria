@@ -7,8 +7,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item">
-                            <router-link to="#" class="navbar-brand">
-                                <i class='bx bx-menu boxi-icon vr-middle'></i> 
+                            <router-link to="#" class="navbar-brand" v-on:click="isHidden = !isHidden">
+                                <i class='bx bx-menu boxi-icon vr-middle'></i>
                             </router-link>
                         </li>
                     </ul>
@@ -19,7 +19,9 @@
                             </router-link>
                             <ul class="dropdown-menu menu-left" aria-labelledby="navbarDropdown">
                                 <li class="dropdown-item txt">You have <span id="">...</span> messages</li> <hr class="m-0"/>
-                                <li class="text-center"><a href="#">See All Messages</a></li>
+                                <li class="text-center">
+                                    <router-link to="#"> See All Messages </router-link>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -35,9 +37,7 @@
                                 <li class="dropdown-item signout-container">
                                     <div class="text-center">
                                         <img src="../assets/images/avatar.png" class="user-image signout-img" alt="User Image" />
-                                        <p>
-                                            Admin User Name <br> <small> Member since with date </small>
-                                        </p>
+                                        <p> Admin User Name <br> <small> Member since with date </small> </p>
                                     </div>
                                 </li> <hr class="m-0"/>
 
@@ -78,7 +78,7 @@
     .menu-left>li>a { font-size:12px; color:#444 !important; text-align:center; text-decoration:none; }
     .dropdown-menu>li.txt { color:#444444; font-size:14px; }
     .dropdown-toggle::after { display:none; }
-    .dropdown-menu[data-bs-popper] { left:-103px; width:18rem; --bs-dropdown-padding-x:none; --bs-dropdown-link-hover-bg:#3c8dbc; border:1px solid #ccc;}
+    .dropdown-menu[data-bs-popper] { left:-104px; width:18rem; --bs-dropdown-padding-x:none; --bs-dropdown-link-hover-bg:#3c8dbc; border:1px solid #ccc;}
     .signout-container { background-color:#3c8dbc; }
     .signout-img { height:90px; width:90px; }
     ul li div p { color:#fff; font-size:17px; margin-top:10px; }

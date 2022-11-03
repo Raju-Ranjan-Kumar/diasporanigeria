@@ -266,10 +266,10 @@ a:focus {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 12px;
-    padding: 7px 5px;
+    padding: 4px 5px;
     position: absolute;
     top: 15px;
-    right: 10px;
+    right: 15px;
     border-radius: 2px
 }
 .content-header>.breadcrumb>li>a {
@@ -281,9 +281,6 @@ a:focus {
 .content-header>.breadcrumb>li>a>.glyphicon,
 .content-header>.breadcrumb>li>a>.ion {
     margin-right: 5px
-}
-.content-header>.breadcrumb>li+li:before {
-    content: '>\00a0'
 }
 @media (max-width: 991px) {
     .content-header>.breadcrumb {
@@ -1599,7 +1596,8 @@ a:focus {
 .box-header>.ion,
 .box-header .box-title {
     display: inline-block;
-    font-size: 18px;
+    font-size:15px;
+    font-weight: bold;
     margin: 0;
     line-height: 1
 }

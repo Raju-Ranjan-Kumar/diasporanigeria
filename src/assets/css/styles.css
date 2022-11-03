@@ -4,7 +4,7 @@ body { overflow-x:hidden; }
 .navbar {--bs-navbar-padding-y:0rem !important; }
 .he-logo { width:115px; height:80px; margin-left:40px; }
 .header { box-shadow:0px 0px 10px#c7c9c8; background-color:#ffffff; }
-.pass-input { width:200px !important; height:35px; border-radius:2px; border:1px solid #ced4da; color:#000; background:#fff; }
+.pass-input { width:195px !important; height:35px; border-radius:2px; border:1px solid #ced4da; color:#000; background:#fff; }
 .f-password { color:#127242; text-decoration:none; margin-left:10px; font-size:13px; }
 .f-password:hover { color:#0c834d; }
 .hedr-btn { height:34px; color:white; border:1px solid #087E4B; padding:0px 10px; border-radius:2px;
@@ -41,15 +41,22 @@ body { overflow-x:hidden; }
 .forgottext p { font-size:13px; margin:25px 0px; padding:0px 25px; text-align:center; color:#000; }
 
 /* boxi-icon css */
-.input-group-text { width:3rem; }
+.input-group-text { width:2.6rem; }
 .box-icon { font-weight:bold; color:#0c834d; margin:auto; }
 
 /* international phone number css */
-.number-input { width:100%; font-size:1rem; font-weight:400; line-height:1.8; color:#212529; background-color:#fff;
+.number-input { width:100%; font-size:0.9rem; font-weight:400; line-height:1.8; color:#212529; background-color:#fff;
     border:1px solid #ced4da; border-radius:0.375rem !important;
 }
-.vti__input { padding-left:3px; }
+.vti__input { padding-left:4px; }
+.vti__dropdown { padding:7px 4px; cursor:pointer; display:flex; align-content:center; justify-content:center; position:relative; }
+.vti__dropdown-list { z-index:1; padding:0; margin:0; text-align:left; list-style:none; max-height:210px; width:369px;
+    overflow-y:scroll; position:absolute; left:-1px; background-color:#fff; border: 1px solid#ccc; 
+}
+.vti__dropdown-item { cursor:pointer;  padding:3px 8px; }
 
+/* text & icon center css */
 .icon-text-center { display:flex; align-items:center; justify-items:center; }
 
+/* validation css */
 .invalid-feedback { color:red; font-weight:bold; }

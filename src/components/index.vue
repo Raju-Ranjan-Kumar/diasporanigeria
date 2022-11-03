@@ -106,14 +106,11 @@
                 return true;
             },
             submitData() {
-                if (this.validate()) {
+                if (this.validate()) { 
+                    console.warn("values :",this.post.firstName,this.post.lastName,this.post.email,this.post.phone,this.post.password,this.post.conPassword)
 
-                    this.axios.post("http://localhost:3000/signup").then((response) => {
-                        if( response.status != 200 ){
-                            throw response.status;
-                        }else{
-                            return response.json();
-                        }
+                    this.axios.post("http://localhost:3000/signup").then(() => {
+                        console.warn("Register Sucessfully")
                     })
                 }
             }
@@ -123,5 +120,5 @@
 
 <style scoped>
     .btn { border-radius:0.375rem; }
-    .bx { font-size:20px; }
+    .bx { font-size:18px; }
 </style>
