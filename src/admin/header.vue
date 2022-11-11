@@ -5,10 +5,10 @@
         <nav class="navbar navbar-expand-lg nav-hedr navbar-static-top">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-lg-0 txt-dec-none">
                         <li class="nav-item">
-                            <router-link to="#" class="navbar-brand" v-on:click="isHidden = !isHidden">
-                                <i class='bx bx-menu boxi-icon vr-middle'></i>
+                            <router-link to="#" class="navbar-brand">
+                                <i class='bx bx-menu boxi-icon vr-middle'></i> 
                             </router-link>
                         </li>
                     </ul>
@@ -18,14 +18,14 @@
                                 <i class='bx bx-envelope boxi-icon vr-middle'></i> <span class="label label-success" id="total_msg"></span>
                             </router-link>
                             <ul class="dropdown-menu menu-left" aria-labelledby="navbarDropdown">
-                                <li class="dropdown-item txt">You have <span id="">...</span> messages</li> <hr class="m-0"/>
+                                <li class="dropdown-item txt">You have <span id="">10</span> messages</li> <hr class="m-0"/>
                                 <li class="text-center">
                                     <router-link to="#"> See All Messages </router-link>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <router-link to="/" class="text-light ms-1 vr-middle header-text">
+                        <li class="nav-item">
+                            <router-link to="/" class="text-light vr-middle header-text">
                                 <i class='bx bx-desktop boxi-icon vr-middle'></i> Visit Website
                             </router-link>
                         </li>
@@ -64,21 +64,27 @@
 
 <style scoped>
     .main-header { background-color:#3c8dbc; }
-    .main-header .logo { font-weight: 600;}
+    .main-header .logo { font-weight:600; background-color:#367fa9;}
     .header-route { color:white; font-size:20px; text-decoration:none;}
     .nav-hedr { transition:margin-left .3s ease-in-out; margin-bottom:0; border-radius:0; margin-left:230px; border:none; min-height:50px;}
+    .navbar-brand { margin-right:0;}
+    .container-fluid { --bs-gutter-x:none;}
     .txt-dec-none { text-decoration:none; list-style:none; }
     ul.txt-dec-none{ margin-bottom: 0rem; }
-    .txt-dec-none li{ padding: 8px 12px; }
+    .txt-dec-none li{ padding:12px 12px; }
+    .nav-item:hover { background-color:#367fa9; }
     .boxi-icon { font-size:20px; color:white; font-weight:normal !important;}
     .img-hedr { border-radius:0px; height:25px; width:25px; }
     .vr-middle { vertical-align:middle; text-decoration:none;}
     .header-text { font-size:14px; }
-    .menu-left { width:15rem !important; left:-195px !important; --bs-dropdown-link-hover-bg:none !important;}
+    .menu-left { width:17rem !important; left:-227px !important; --bs-dropdown-link-hover-bg:none !important;}
     .menu-left>li>a { font-size:12px; color:#444 !important; text-align:center; text-decoration:none; }
+    .menu-left>li>a:hover { background-color:#ffffff; }
+    .dropdown-menu[data-bs-popper] { left:-132px; width:19rem; --bs-dropdown-padding-x:none; --bs-dropdown-link-hover-bg:#3c8dbc; 
+        border:1px solid #ccc; --bs-dropdown-border-radius:none; border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem;
+    }
     .dropdown-menu>li.txt { color:#444444; font-size:14px; }
     .dropdown-toggle::after { display:none; }
-    .dropdown-menu[data-bs-popper] { left:-104px; width:18rem; --bs-dropdown-padding-x:none; --bs-dropdown-link-hover-bg:#3c8dbc; border:1px solid #ccc;}
     .signout-container { background-color:#3c8dbc; }
     .signout-img { height:90px; width:90px; }
     ul li div p { color:#fff; font-size:17px; margin-top:10px; }

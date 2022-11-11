@@ -1,10 +1,10 @@
 /* Header */
 * { padding:0; margin:0; }
-body { overflow-x:hidden; }
-.navbar {--bs-navbar-padding-y:0rem !important; }
-.he-logo { width:115px; height:80px; margin-left:40px; }
+body { overflow-x:hidden; background-color:#222d32; font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; }
+.navbar {--bs-navbar-padding-y:0rem !important; --bs-navbar-brand-font-size:none;}
+.he-logo { width:115px; height:80px; margin-left:25px; }
 .header { box-shadow:0px 0px 10px#c7c9c8; background-color:#ffffff; }
-.pass-input { width:195px !important; height:35px; border-radius:2px; border:1px solid #ced4da; color:#000; background:#fff; }
+.pass-input { width:190px !important; height:35px; border-radius:2px; border:1px solid #ced4da; color:#000; background:#fff; }
 .f-password { color:#127242; text-decoration:none; margin-left:10px; font-size:13px; }
 .f-password:hover { color:#0c834d; }
 .hedr-btn { height:34px; color:white; border:1px solid #087E4B; padding:0px 10px; border-radius:2px;
@@ -34,21 +34,21 @@ body { overflow-x:hidden; }
 .back-p:hover { color:#00a558;}
 .back-p span:hover { text-decoration:underline; }
 .bx-chevron-left { font-size:22px; }
-.forgoticon { margin:30px auto 40px auto; text-align:center; width:80px; height:80px; border-radius:50%; border:1px solid #17783b; }
+.forgoticon { margin:28px auto 40px auto; text-align:center; width:80px; height:80px; border-radius:50%; border:1px solid #17783b; }
 .forgoticon img { width:50px; height:50px; top:50%; bottom:50%; transform:translate(-50%, -50%); }
 .forgot-pas { width:100%; height:auto; font-weight:800; color:#00a558; font-size:16px; margin:20px 0px; text-align:center;}
 .forgottext { width:100%; height:auto; text-align:center; }
-.forgottext p { font-size:13px; margin:25px 0px; padding:0px 25px; text-align:center; color:#000; }
+.forgottext p { font-size:13px; font-style:italic; margin:25px 0px; padding:0px 24px; text-align:center; color:#000; }
 
 /* boxi-icon css */
 .input-group-text { width:2.6rem; }
 .box-icon { font-weight:bold; color:#0c834d; margin:auto; }
 
 /* international phone number css */
-.number-input { width:100%; font-size:0.9rem; font-weight:400; line-height:1.8; color:#212529; background-color:#fff;
+.number-input { width:100%; font-size:14px; font-weight:400; line-height:1.8; color:#212529; background-color:#fff;
     border:1px solid #ced4da; border-radius:0.375rem !important;
 }
-.vti__input { padding-left:4px; }
+.vti__input { padding-left:3px; }
 .vti__dropdown { padding:7px 4px; cursor:pointer; display:flex; align-content:center; justify-content:center; position:relative; }
 .vti__dropdown-list { z-index:1; padding:0; margin:0; text-align:left; list-style:none; max-height:210px; width:369px;
     overflow-y:scroll; position:absolute; left:-1px; background-color:#fff; border: 1px solid#ccc; 
@@ -60,3 +60,6 @@ body { overflow-x:hidden; }
 
 /* validation css */
 .invalid-feedback { color:red; font-weight:bold; }
+
+.form-select{ cursor:pointer; color:#212529; font-size:14px; }
+.form-control { color:#212529; font-size:14px; }

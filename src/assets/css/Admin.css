@@ -7,7 +7,7 @@
 body {
     font-weight: 400;
     overflow-x: hidden;
-    overflow-y: auto
+    overflow-y: auto;
 }
 .wrapper {
     height: 100%;
@@ -69,9 +69,8 @@ body {
         transform: translate(230px, 0)
     }
 }
-.content-wrapper,
-.right-side {
-    min-height: 100%;
+.content-wrapper, .right-side {
+    min-height: 100vh;
     background-color: #ecf0f5;
     z-index: 800
 }
@@ -280,7 +279,7 @@ a:focus {
 .content-header>.breadcrumb>li>a>.bx,
 .content-header>.breadcrumb>li>a>.glyphicon,
 .content-header>.breadcrumb>li>a>.ion {
-    margin-right: 5px
+    margin-right: 0px
 }
 @media (max-width: 991px) {
     .content-header>.breadcrumb {
@@ -435,7 +434,7 @@ a:focus {
 .user-panel>.info>a>.bx,
 .user-panel>.info>a>.ion,
 .user-panel>.info>a>.glyphicon {
-    margin-right: 3px
+    margin-right: 4px
 }
 .sidebar-menu {
     list-style: none;
@@ -454,7 +453,7 @@ a:focus {
 .sidebar-menu>li>a>.bx,
 .sidebar-menu>li>a>.glyphicon,
 .sidebar-menu>li>a>.ion {
-    width: 20px
+    width: 22px
 }
 .sidebar-menu>li .label,
 .sidebar-menu>li .badge {
@@ -472,7 +471,7 @@ a:focus {
     width: auto;
     height: auto;
     padding: 0;
-    margin-right: 10px
+    /* margin-right: 10px */
 }
 .sidebar-menu li>a>.bx-chevron-left{
     position: absolute;

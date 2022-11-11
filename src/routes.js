@@ -8,6 +8,8 @@ import businessList from './admin/business_list'
 import sendNotification from './admin/send_notification'
 import sendSms from './admin/send_sms'
 import businessAdd from './admin/business_addf'
+import eventsPage from './admin/events'
+import ticketPage from './admin/ticket'
 
 const routes = [
     {
@@ -54,6 +56,16 @@ const routes = [
         name:businessAdd,
         path:'/admin/business_addf',
         component:businessAdd
+    },
+    {
+        name:eventsPage,
+        path:'/admin/events',
+        component:eventsPage
+    },
+    {
+        name:ticketPage,
+        path:'/admin/ticket',
+        component:ticketPage
     },
 ];
 

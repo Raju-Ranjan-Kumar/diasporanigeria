@@ -13,7 +13,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../src/assets/css/styles.css';
 import '../src/assets/css/Admin.css';
 import '../src/assets/css/custom.css';
-import '../src/assets/css/admins.css';
 
 const app = createApp(App) 
 app.use(router)

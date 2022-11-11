@@ -71,12 +71,17 @@
                 if (isInvalid) {
                     this.forgot.errors = errors;
                     return false;
+                }else {
+                    this.forgot.errors = {}
                 }
                 return true;
             },
             submitPhone() {
                 if (this.validate()) {
-                    console.log("Forgot successfully");
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const value = response;
+                        console.warn(value);
+                    });
                 }
             }
         }

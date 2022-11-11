@@ -3,7 +3,7 @@ import validator from "validator";
 const validatAddUpdate = (data) => {
     let errors = {};
 
-    const { scode, sname, bname, category, latitude, longitude, address, website, onChangeFileUpload } = data
+    const { scode, sname, bname, category, latitude, longitude, address, website, logo } = data
 
     if(validator.isEmpty(scode)) {
         errors.scode = "*Please fill out this field"
@@ -37,8 +37,8 @@ const validatAddUpdate = (data) => {
         errors.website = "*Website link is required"
     }
 
-    if(validator.isEmpty(onChangeFileUpload)) {
-        errors.onChangeFileUpload = "*Logo is required"
+    if(!logo) {
+        errors.logo = "*Logo is required"
     }
 
     return{

@@ -1,0 +1,109 @@
+<template>
+    <Header></Header>
+    <Menu></Menu>
+
+     <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <div class="row icon-text-center">
+                        <div class="col-md-6">
+                            <div class="listpage ">
+                                <h4 class="mb-0">Manage Events</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <RouterLink to="#">
+                                <input type="button" value="Add Events" class="btn btn-success add-business"/> 
+                            </RouterLink>
+                        </div>
+                    </div>
+                </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" style="width:3%"> Id </th>
+                                                <th class="text-center" style="width:5%"> Name </th>
+                                                <th class="text-center" style="width:5%"> Image </th>
+                                                <th class="text-center" style="width:20%"> Description </th>
+                                                <th class="text-center" style="width:20%"> Location </th>
+                                                <th class="text-center" style="width:5%"> Begin </th>
+                                                <th class="text-center" style="width:5%"> End </th>
+                                                <th class="text-center" style="width:11%"> Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="text-center" v-for="value in values" v-bind:key="value">
+                                                <td class="text-center"> {{value.id}} </td>
+                                                <td class="text-center"> {{value.name}} </td>
+                                                <td class="text-center"> {{value.image}} </td>
+                                                <td class="text-center"> {{value.description}} </td>
+                                                <td class="text-center"> {{value.location}} </td>
+                                                <td class="text-center"> {{value.begin}} </td>
+                                                <td class="text-center"> {{value.end}} </td>
+                                                <td class="text-center">
+                                                    <RouterLink to="#" class="btn btn-primary me-2"> <i class="ph-eye action"></i> </RouterLink>
+                                                    <RouterLink to="#" class="btn btn-warning text-light me-2"> <i class='bx bxs-pencil action'></i> </RouterLink>
+                                                    <RouterLink to="#" class="btn btn-danger"> <i class='bx bx-trash action'></i> </RouterLink>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success btn-sm me-2">Update</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+
+    <Footer></Footer>
+</template>
+
+<script>
+    import Header from './header.vue';
+    import Menu from './menu.vue';
+    import Footer from './footer.vue';
+    import axios from 'axios';
+
+    export default {
+        name: "eventsPage",
+        components: { Header, Footer, Menu },
+        data(){
+            return{
+                values: [],
+            }
+        },
+        mounted () {
+            axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/events").then((response) => {
+                this.values = response.data.data;
+            });
+        }
+    }
+</script>
+
+<style scoped>
+    table th{ font-size:12px; }  
+    .listpage h4 { font-size:20px; text-transform:uppercase; font-weight:800;}
+    .btn { display:inline-block; padding:3px 7px; margin-bottom:0; font-size:15px; font-weight:normal; line-height:1.42857143;
+        text-align:center; white-space:nowrap; vertical-align:middle; cursor:pointer; border:1px solid transparent; border-radius:4px;
+    }
+    .btn-success { color:#fff; background-color:#5cb85c; border-color:#4cae4c; }
+    .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+        border:1px solid #dee2e6;
+    }
+    .add-business { font-size:14px; font-weight:bold; padding:6px 8px; }
+    .action { font-size:15px; font-weight:bold; margin-top:3px;}
+</style>

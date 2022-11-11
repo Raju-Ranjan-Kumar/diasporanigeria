@@ -60,7 +60,10 @@
 #store-grid thead th.sorting:nth-child(7n){ pointer-events:none; cursor:default; background:none; }
 
 .img-thumbnail-prod { padding:4px; line-height:1.42857143; background-color:#ffffff; border:1px solid #dddddd; border-radius:3px;
-    -webkit-transition:all 0.2s ease-in-out; -o-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; display:inline-block; width:70px; height:70px;
+    -webkit-transition:all 0.2s ease-in-out; -o-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; display:inline-block; width:100%; height:70px;
+}
+@media(max-width:768px){
+    .img-thumbnail-prod{ width:70px; }
 }
 .img-thumbnail-brand { padding:4px; line-height:1.42857143; background-color:#ffffff; border:1px solid #dddddd; border-radius:3px;
     -webkit-transition:all 0.2s ease-in-out; -o-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; display:inline-block; width:80px; height:80px;

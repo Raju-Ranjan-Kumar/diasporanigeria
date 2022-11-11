@@ -7,7 +7,6 @@
                 <p class="fw-bold">DIASPORA NIGERIA IS AN ONLINE REALTIME PLATFORM FOR <br> NIGERIANS IN THE DIASPORA .</p>
                 <span>Meet Nigerians With Common Interests In Your Location</span>
             </div>
-            
             <div class="col-5 loginformmain">
                 <div class="login">
                     <h2 class="text-center create-acnt">Create an account</h2>
@@ -43,8 +42,10 @@
                                 <div class="invalid-feedback"> {{this.post.errors.conPassword}} </div>
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="flexCheckDefault" value="flexCheckDefault"  v-model="checkbox" />
-                                <label class="form-check-label" for="flexCheckDefault"> I agree to the  <router-link to="" class="listbusiness"> Terms and Conditions </router-link> </label>
+                                <input type="checkbox" class="form-check-input" id="flexCheckDefault"/>
+                                <label class="form-check-label" for="flexCheckDefault"> 
+                                    I agree to the <router-link to="" class="listbusiness"> Terms and Conditions </router-link>
+                                </label>
                             </div>
                             <div class="d-grid gap-2 col-12 mx-auto">
                                 <button type="submit" class="btn btn-success fw-bold">Sign Up</button>
@@ -98,22 +99,23 @@
                     password: this.post.password,
                     conPassword: this.post.conPassword,
                 });
-
                 if (isInvalid) {
                     this.post.errors = errors;
                     return false;
+                } else {
+                    this.post.errors = {}
                 }
                 return true;
             },
             submitData() {
                 if (this.validate()) { 
-                    console.warn("values :",this.post.firstName,this.post.lastName,this.post.email,this.post.phone,this.post.password,this.post.conPassword)
-
-                    this.axios.post("http://localhost:3000/signup").then(() => {
-                        console.warn("Register Sucessfully")
-                    })
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const value = response;
+                        console.warn(value);
+                    });
                 }
-            }
+                
+            },
         },
     }
 </script>

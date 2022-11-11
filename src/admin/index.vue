@@ -6,12 +6,12 @@
                 <h2 class="login-box-hed ">Administrator</h2>
                 <div class="contant">
                     <form @submit.prevent="submitData" @input="validate" method="post" novalidate>
-                        <div class="input-group mb-4">
+                        <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class='bx bxs-user box-icon'></i></span>
                             <input type="text" :class="`form-control input-radius ${this.post.errors.username ? 'is-invalid' : ''}`" placeholder="Username" v-model="post.username">
                             <div class="invalid-feedback"> {{this.post.errors.username}} </div>
                         </div>
-                        <div class="input-group mb-4">
+                        <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class='bx bxs-lock box-icon'></i></span>
                             <input type="password" :class="`form-control input-radius ${this.post.errors.password ? 'is-invalid' : ''}`" placeholder="Password" v-model="post.password">
                             <div class="invalid-feedback"> {{this.post.errors.password}} </div>
@@ -53,12 +53,17 @@
                 if (isInvalid) {
                     this.post.errors = errors;
                     return false;
+                }else {
+                    this.post.errors = {}
                 }
                 return true;
             },
             submitData(){
                 if (this.validate()) {
-                    console.log("values :",this.post.username,this.post.password,);
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const value = response;
+                        console.warn(value);
+                    });
                 }
             }
         }
@@ -73,7 +78,7 @@
         line-height:21px; letter-spacing:1px; color:#3c8dbc; font-weight:500;
     }
     .login-admin-msg { padding:40px 0px; text-align:center; font-size:14px; color:#666; }
-    .bttn { background-color:#3c8dbc; border-color:#367fa9; color:white; }
+    .bttn { background-color:#3c8dbc; border-color:#367fa9; color:white; font-weight:bold;}
     .bttn:hover { background-color:#367fa9 !important; color:white !important; }
     .bx { font-size:18px; color:#3c8dbc; }
     .input-radius { border-radius:3px; }

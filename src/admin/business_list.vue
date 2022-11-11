@@ -23,12 +23,10 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-2">
-                            <div class="col-md-10">
-                                <RouterLink to="/admin/business_addf">
-                                    <input type="button" value="Add Business" class="btn btn-success add-business"/> 
-                                </RouterLink>
-                            </div>
+                        <div class="col-md-2 text-end">
+                            <RouterLink to="/admin/business_addf">
+                                <input type="button" value="Add Business" class="btn btn-success add-business"/> 
+                            </RouterLink>
                         </div>
                     </div>
                 </section>
@@ -43,7 +41,7 @@
                                             <div class="col-md-3">
                                                 <div class="input-group">
                                                     <span class="pe-2 csr-dflt">Show</span>
-                                                    <select class="form-select input-sm">
+                                                    <select class="form-select drop_down">
                                                         <option selected> 10 </option>
                                                         <option value="1"> 25 </option>
                                                         <option value="2"> 50 </option>
@@ -52,10 +50,13 @@
                                                     <span class="ps-2 csr-dflt">entries</span>
                                                 </div>
                                             </div>
+                                            <!-- <div>
+                                                <p>Checkbox value {{check_all}}</p>
+                                            </div> -->
                                             <div class="col-md-3 ms-auto">
                                                 <div class="input-group">
                                                     <span class="pe-2 csr-dflt">Search:</span>
-                                                    <input type="search" class="form-control input-sm">
+                                                    <input type="search" class="form-control drop_down">
                                                 </div>
                                             </div>
                                         </div>
@@ -63,9 +64,9 @@
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center" style="width:3%">
+                                                    <th class="text-center" style="width:5%">
                                                         <div class="squaredFour">
-                                                            <input  type="checkbox" v-model="check_all"/>
+                                                            <input  type="checkbox" id="check_all" value="All" v-model="check_all"/>
                                                             <label for="check_all"></label>
                                                         </div>
                                                     </th>
@@ -74,15 +75,15 @@
                                                     <th class="text-center" style="width:20%"> Business Name </th>
                                                     <th class="text-center" style="width:12%"> State </th>
                                                     <th class="text-center" style="width:6%"> Status </th>
-                                                    <th class="text-center" style="width:4%"> Action </th>
+                                                    <th class="text-center" style="width:5%"> Action </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="text-center">
                                                     <td class="text-center">
                                                         <div class="squaredFour">
-                                                            <input type="checkbox" class="checkall" v-model="checkbox" />
-                                                            <label for="checkall"></label>
+                                                            <input type="checkbox" id="check_box" value="First" v-model="check_all" />
+                                                            <label for="check_box"></label>
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
@@ -106,12 +107,12 @@
                                                 <tr class="text-center">
                                                     <td class="text-center">
                                                         <div class="squaredFour">
-                                                            <input type="checkbox" class="checkall" v-model="checkbox" />
-                                                            <label for="checkbox"></label>
+                                                            <input type="checkbox" id="check_box2" value="Second" v-model="check_all"/>
+                                                            <label for="check_box2"></label>
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
-                                                        <img src="../assets/images/avatar.png" class="img-thumbnail-prod" />
+                                                        <img src="../assets/images/bg.jpg" class="img-thumbnail-prod" />
                                                     </td>
                                                     <td>ENTERTAINMENT</td>
                                                     <td>Abdul aka</td>
@@ -123,7 +124,7 @@
                                                         </label>
                                                     </td>
                                                     <td class="text-center">
-                                                        <RouterLink :to="{ path: '/admin/business_addf', component: 'businessAdd' }" class="btn btn-primary">
+                                                        <RouterLink to="/admin/business_addf" class="btn btn-primary">
                                                             <i class='bx bxs-pencil'></i> 
                                                         </RouterLink>
                                                     </td>
@@ -156,8 +157,14 @@
     import Footer from './footer.vue';
 
     export default {
+        el : ".squaredFour",
         name: "businessList",
-        components: { Header, Footer, Menu }
+        components: { Header, Footer, Menu },
+        data(){
+            return{
+                check_all : [],
+            }
+        }
     }
 </script>
 
@@ -171,8 +178,7 @@
     .btn-success { color:#fff; background-color:#5cb85c; border-color:#4cae4c; }
     .width{ width:200px; }
     .p-b { padding-bottom:10px;}
-    .margin-t-b { margin-top:10px; margin-bottom:10px; }
-    .input-sm { height:30px; padding:5px 10px; font-size:12px; line-height:1.5; border-radius:3px !important; }
+    .drop_down { height:30px; padding:5px 10px; font-size:12px; line-height:1.5; border-radius:3px !important; }
     .csr-dflt { cursor:default; font-size:14px; align-self:center;}
     .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
         border:1px solid #dee2e6;

@@ -10,15 +10,15 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="d-flex ms-auto" @input="validate">
-                    <div class="">
+                <div class="d-flex mrgn-l-f" @input="validate">
+                    <div>
                         <vue-tel-input :class="`${this.post.errors.phone ? 'is-invalid' : ''}`" v-model="post.phone" @input="onInput"></vue-tel-input>
                         <div class="invalid-feedback"> {{this.post.errors.phone}} </div>
                     </div>
 
                     <div>
                         <input :class="`form-control me-2 ms-2 pass-input ${this.post.errors.password ? 'is-invalid' : ''}`" type="password" placeholder="Password" v-model="post.password">
-                        <div class="invalid-feedback"> {{this.post.errors.password}} </div>
+                        <div class="invalid-feedback ms-2"> {{this.post.errors.password}} </div>
                         <router-link to="/forgot_password" class="f-password">Forgot Password?</router-link>
                     </div>
 
@@ -58,12 +58,17 @@
                 if (isInvalid) {
                     this.post.errors = errors;
                     return false;
+                }else {
+                    this.post.errors = {}
                 }
                 return true;
             },
             submitNumber() {
                 if (this.validate()) {
-                    console.log("values :",this.post.phone,this.post.password,);
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const value = response;
+                        console.warn(value);
+                    });
                 }
             }
         }
@@ -71,7 +76,8 @@
 </script>
 
 <style scoped>
-    .vue-tel-input { height:35px; width:212px; font-size:0.9rem; border:1px solid #ced4da; color:#000; background:#fff; }
+    .vue-tel-input { height:35px; width:205px; font-size:14px; border:1px solid #ced4da; color:#000; background:#fff; }
     .navbar-collapse { padding:8px 0px; }
-    .btn { --bs-btn-font-size: 0.9rem; }
+    .btn { --bs-btn-font-size: 1rem; }
+    .mrgn-l-f { margin-left:auto; margin-right:15px;}
 </style>

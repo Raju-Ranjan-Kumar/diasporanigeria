@@ -103,12 +103,17 @@
                 if (isInvalid) {
                     this.notification.errors = errors;
                     return false;
+                }else {
+                    this.notification.errors = {}
                 }
                 return true;
             },
             sndNotification(){
                 if (this.validate()) {
-                    console.log("values :",this.notification.type,this.notification.Users,this.notification.title,this.notification.message,);
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const value = response;
+                        console.warn(value);
+                    });
                 }
             }
         }

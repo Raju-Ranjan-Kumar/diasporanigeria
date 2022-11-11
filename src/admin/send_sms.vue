@@ -50,7 +50,7 @@
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-success btn-sm me-2">Submit</button>
                                 <button type="reset" class="btn btn-danger btn-sm">Reset</button>
-                                <p class="text-center"> sess_msg <span class="box-title" style="font-size:14px;color:#a94442"><strong>sess_msg</strong></span></p>
+                                <p class="text-center"> msg <span class="box-title" style="font-size:14px;color:#a94442"><strong>sess_msg</strong></span></p>
                             </div>
                         </form>
                     </div>
@@ -78,7 +78,7 @@
                     type: '',
                     users: '',
                     message: '',
-                }
+                },
             }
         },
         methods:{
@@ -92,12 +92,19 @@
                 if (isInvalid) {
                     this.sms.errors = errors;
                     return false;
+                }else {
+                    this.sms.errors = {}
                 }
                 return true;
             },
             sndSms(){
                 if (this.validate()) {
-                    console.log("values :",this.sms.type,this.sms.users,this.sms.message,);
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const values = response.data.data;
+                        console.warn(values);
+                    }).catch((error) => {
+                        console.warn(error);
+                    });
                 }
             }
         }

@@ -138,9 +138,8 @@
 <style scoped>
     .bx-multiply { transform:rotate(45deg); font-weight:bold; }
     .vr-align-btm { margin-bottom:0; padding-bottom:0; vertical-align:bottom; }
-    .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
-        border:1px solid #dee2e6;
-    }
+    .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, 
+    .table-bordered>tfoot>tr>td { border:1px solid #dee2e6; }
     .mor-rec { color:#3c8dbc; text-decoration:none; }
     .mor-rec:hover { text-decoration:underline; }
 </style>

@@ -9,7 +9,7 @@
                     <h1> Add Business</h1>
                     <ol class="breadcrumb icon-text-center">
                         <li> 
-                            <RouterLink to="/admin/welcome" class="text-size">
+                            <RouterLink to="#" class="text-size">
                                 <i class='bx bxs-dashboard'></i> <span class="me-2">Home</span> 
                             </RouterLink> 
                         </li>
@@ -19,70 +19,70 @@
                 </section>
                 <section class="content">
                     <div class="box box-default">
-                        <form @submit.prevent="addBusiness" @input="validate" method="post" novalidate>
+                        <form @submit.prevent="addBusiness" @change="validate" method="post" novalidate>
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>State Code</label>
-                                            <input type="text" v-model="scode" :class="`form-control height ${this.addUpdate.errors.scode ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.scode" :class="`form-control height ${this.addUpdate.errors.scode ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.scode}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>State Name</label>
-                                            <input type="text" v-model="sname" :class="`form-control height ${this.addUpdate.errors.sname ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.sname" :class="`form-control height ${this.addUpdate.errors.sname ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.sname}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Business Name</label>
-                                            <input type="text" v-model="bname" :class="`form-control height ${this.addUpdate.errors.bname ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.bname" :class="`form-control height ${this.addUpdate.errors.bname ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.bname}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <input type="text" v-model="category" :class="`form-control height ${this.addUpdate.errors.category ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.category" :class="`form-control height ${this.addUpdate.errors.category ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.category}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Latitude</label>
-                                            <input type="text" v-model="latitude" :class="`form-control height ${this.addUpdate.errors.latitude ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.latitude" :class="`form-control height ${this.addUpdate.errors.latitude ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.latitude}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Longitude</label>
-                                            <input type="text" v-model="longitude" :class="`form-control height ${this.addUpdate.errors.longitude ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.longitude" :class="`form-control height ${this.addUpdate.errors.longitude ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.longitude}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <input type="text" v-model="address" :class="`form-control height ${this.addUpdate.errors.address ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.address" :class="`form-control height ${this.addUpdate.errors.address ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.address}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Website</label>
-                                            <input type="text" v-model="website" :class="`form-control height ${this.addUpdate.errors.website ? 'is-invalid' : ''}`" autocomplete="off">
+                                            <input type="text" v-model="addUpdate.website" :class="`form-control height ${this.addUpdate.errors.website ? 'is-invalid' : ''}`" autocomplete="off">
                                             <div class="invalid-feedback"> {{this.addUpdate.errors.website}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Logo</label>
-                                            <input type="file" v-on:change="onChangeFileUpload()" :class="`form-control ${this.addUpdate.errors.onChangeFileUpload ? 'is-invalid' : ''}`" />
-                                            <div class="invalid-feedback"> {{this.addUpdate.errors.onChangeFileUpload}} </div>
+                                            <input type="file" v-on:change="logo" :class="`form-control ${this.addUpdate.errors.logo ? 'is-invalid' : ''}`" />
+                                            <div class="invalid-feedback"> {{this.addUpdate.errors.logo}} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -122,11 +122,14 @@
                     longitude: '',
                     address: '',
                     website: '',
-                    onChangeFileUpload: ''
+                    logo: ''
                 }
             }
         },
         methods:{
+            logo(e) {
+                this.addUpdate.logo = e.target.files.length ? e.target.files[0] : ''
+            },
             validate() {
                 const { isInvalid, errors } = validatAddUpdate({
                     scode: this.addUpdate.scode,
@@ -137,18 +140,23 @@
                     longitude: this.addUpdate.longitude,
                     address: this.addUpdate.address,
                     website: this.addUpdate.website,
-                    onChangeFileUpload: this.addUpdate.onChangeFileUpload,
+                    logo: this.addUpdate.logo,
                 });
 
                 if (isInvalid) {
                     this.addUpdate.errors = errors;
                     return false;
+                }else {
+                    this.addUpdate.errors = {}
                 }
                 return true;
             },
             addBusiness(){
                 if (this.validate()) {
-                    console.log("values :",this.addUpdate.scode, this.addUpdate.sname, this.addUpdate.bname, this.addUpdate.category, this.addUpdate.latitude, this.addUpdate.longitude, this.addUpdate.address, this.addUpdate.website, this.addUpdate.onChangeFileUpload);
+                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const value = response;
+                        console.warn(value);
+                    });
                 }
             }
         }
@@ -158,7 +166,6 @@
 <style scoped>
     label { margin-bottom:5px; font-weight:bold; font-size:14px; }
     .form-group { margin-bottom:12px; }
-    .form-control { color:#212529; font-size:14px; }
     .height { height:36px; }
     .text-size { font-size:12px; font-weight:bold; }
 </style>
