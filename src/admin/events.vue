@@ -2,18 +2,19 @@
     <Header></Header>
     <Menu></Menu>
 
-     <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
             <div class="content-wrapper">
                 <section class="content-header">
                     <div class="row icon-text-center">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="listpage ">
                                 <h4 class="mb-0">Manage Events</h4>
                             </div>
                         </div>
-                        <div class="col-md-6 text-end">
-                            <RouterLink to="#">
+                        <div class="col-md-8 justify-content-end d-flex align-items-center">
+                            <input type="search" class="form-control search-box" placeholder="Search" @input="filter" v-model="searchText">
+                            <RouterLink to="/admin/event-crud/add">
                                 <input type="button" value="Add Events" class="btn btn-success add-business"/> 
                             </RouterLink>
                         </div>
@@ -28,17 +29,17 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center" style="width:3%"> Id </th>
-                                                <th class="text-center" style="width:5%"> Name </th>
-                                                <th class="text-center" style="width:5%"> Image </th>
+                                                <th class="text-center" style="width:6%"> Name </th>
+                                                <th class="text-center" style="width:6%"> Image </th>
                                                 <th class="text-center" style="width:20%"> Description </th>
                                                 <th class="text-center" style="width:20%"> Location </th>
-                                                <th class="text-center" style="width:5%"> Begin </th>
-                                                <th class="text-center" style="width:5%"> End </th>
-                                                <th class="text-center" style="width:11%"> Action </th>
+                                                <th class="text-center" style="width:4%"> Begin </th>
+                                                <th class="text-center" style="width:4%"> End </th>
+                                                <th class="text-center" style="width:10%"> Action </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="text-center" v-for="value in values" v-bind:key="value">
+                                            <tr class="text-center" v-for="value in tableData" v-bind:key="value">
                                                 <td class="text-center"> {{value.id}} </td>
                                                 <td class="text-center"> {{value.name}} </td>
                                                 <td class="text-center"> {{value.image}} </td>
@@ -47,19 +48,16 @@
                                                 <td class="text-center"> {{value.begin}} </td>
                                                 <td class="text-center"> {{value.end}} </td>
                                                 <td class="text-center">
-                                                    <RouterLink to="#" class="btn btn-primary me-2"> <i class="ph-eye action"></i> </RouterLink>
-                                                    <RouterLink to="#" class="btn btn-warning text-light me-2"> <i class='bx bxs-pencil action'></i> </RouterLink>
+                                                    <RouterLink to="/admin/event-crud/update" class="btn btn-primary me-2"> <i class="ph-eye action"></i> </RouterLink>
+                                                    <RouterLink to="/admin/event-crud/update" class="btn btn-warning text-light me-2"> <i class='bx bxs-pencil action'></i> </RouterLink>
                                                     <RouterLink to="#" class="btn btn-danger"> <i class='bx bx-trash action'></i> </RouterLink>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success btn-sm me-2">Update</button>
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <div class="no-found" v-if="!tableData.length">
+                                        No matching records found! 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,29 +79,46 @@
     export default {
         name: "eventsPage",
         components: { Header, Footer, Menu },
+
         data(){
             return{
+                searchText:'',
                 values: [],
+                tableData: []
             }
         },
         mounted () {
             axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/events").then((response) => {
                 this.values = response.data.data;
+                this.tableData = [...this.values];
             });
-        }
+        },
+        methods:{
+            filter() {
+                if (!this.searchText) {
+                    this.tableData = this.values;
+                } else {
+                    this.tableData = this.values.filter(({ name, description, location }) =>
+                        (name).toLowerCase().includes(this.searchText.toLowerCase()) || (description).toLowerCase().includes(this.searchText.toLowerCase()) 
+                        || (location).toLowerCase().includes(this.searchText.toLowerCase()) 
+                    );
+                }
+            }
+        },
     }
 </script>
 
 <style scoped>
-    table th{ font-size:12px; }  
     .listpage h4 { font-size:20px; text-transform:uppercase; font-weight:800;}
-    .btn { display:inline-block; padding:3px 7px; margin-bottom:0; font-size:15px; font-weight:normal; line-height:1.42857143;
+    .btn { display:inline-block; padding:2px 6px; margin-bottom:0; font-size:14px; font-weight:normal; line-height:1.42857143;
         text-align:center; white-space:nowrap; vertical-align:middle; cursor:pointer; border:1px solid transparent; border-radius:4px;
     }
     .btn-success { color:#fff; background-color:#5cb85c; border-color:#4cae4c; }
     .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
         border:1px solid #dee2e6;
     }
-    .add-business { font-size:14px; font-weight:bold; padding:6px 8px; }
+    .add-business { font-size:14px; padding:6px 8px; }
     .action { font-size:15px; font-weight:bold; margin-top:3px;}
+    .search-box{ width:15rem; margin-right:10px;}
+    .no-found { text-align:center; color:red; padding:6px; border:1px solid #dee2e6; font-size:12px; }
 </style>

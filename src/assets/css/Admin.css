@@ -1,9 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 
-.layout-boxed html,
-.layout-boxed body {
-    height: 100%
-}
+.layout-boxed html,.layout-boxed body { height:100% }
+
 body {
     font-weight: 400;
     overflow-x: hidden;
@@ -123,12 +121,7 @@ body.hold-transition .main-header .logo {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Source Sans Pro', sans-serif
 }
-/* a {
-    color: #3c8dbc
-} */
-a:hover,
-a:active,
-a:focus {
+a:hover,a:active,a:focus {
     outline: none;
     text-decoration: none;
     color: #72afd2
@@ -453,7 +446,7 @@ a:focus {
 .sidebar-menu>li>a>.bx,
 .sidebar-menu>li>a>.glyphicon,
 .sidebar-menu>li>a>.ion {
-    width: 22px
+    width: 23px
 }
 .sidebar-menu>li .label,
 .sidebar-menu>li .badge {
@@ -576,10 +569,10 @@ a:focus {
     .sidebar-mini.sidebar-collapse .sidebar-menu>li>a>span,
     .sidebar-mini.sidebar-collapse .sidebar-menu>li>.treeview-menu,
     .sidebar-mini.sidebar-collapse .sidebar-menu>li>a>.pull-right,
-    .sidebar-mini.sidebar-collapse .sidebar-menu li.header {
+    /* .sidebar-mini.sidebar-collapse .sidebar-menu li.header {
         display: none !important;
         -webkit-transform: translateZ(0)
-    }
+    } */
     .sidebar-mini.sidebar-collapse .main-header .logo {
         width: 50px
     }
@@ -2991,10 +2984,6 @@ table.text-center th {
 .register-logo a {
     color: #444
 }
-.login-page,
-.register-page {
-    /*background: #8b93a2*/
-}
 .login-box,
 .register-box {
     width: 460px;
@@ -4564,24 +4553,12 @@ table.text-center th {
     opacity: 1;
     filter: alpha(opacity=100)
 }
-.chart {
-    position: relative;
-    overflow: hidden;
-    width: 100%
-}
-.chart svg, .chart canvas { width: 100% !important }
 
 @media print {
-    .no-print,
-    .main-sidebar,
-    .left-side,
-    .main-header,
-    .content-header {
+    .no-print,.main-sidebar,.left-side,.main-header,.content-header {
         display: none !important
     }
-    .content-wrapper,
-    .right-side,
-    .main-footer {
+    .content-wrapper,.right-side,.main-footer {
         margin-left: 0 !important;
         min-height: 0 !important;
         -webkit-transform: translate(0, 0) !important;
@@ -4589,25 +4566,14 @@ table.text-center th {
         -o-transform: translate(0, 0) !important;
         transform: translate(0, 0) !important
     }
-    .fixed .content-wrapper,
-    .fixed .right-side {
+    .fixed .content-wrapper,.fixed .right-side {
         padding-top: 0 !important
     }
-    .invoice {
-        width: 100%;
-        border: 0;
-        margin: 0;
-        padding: 0
-    }
-    .invoice-col {
-        float: left;
-        width: 33.3333333%
-    }
-    .table-responsive {
-        overflow: auto
-    }
+    .invoice { width:100%; border:0; margin:0; padding:0; }
+    .invoice-col { float:left; width:33.3333333% }
+    .table-responsive { overflow:auto; }
     .table-responsive>.table tr th,
     .table-responsive>.table tr td {
-        white-space: normal !important
+        white-space:normal !important
     }
 }

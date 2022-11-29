@@ -109,7 +109,7 @@
     .clicked { transform: rotate(-90deg); transition:transform 0.3s ease-in-out; }
     .sub-menu { background-color:#1a2226; color:white; }
     @keyframes subMenu { 0% { transform: translateY(-50%) scaleY(0); } }
-    .ph-ticket { width:22px; font-weight:400; font-style:normal; font-variant:normal; line-height:1; text-rendering:auto;
+    .ph-ticket { width:23px; font-weight:400; font-style:normal; font-variant:normal; line-height:1; text-rendering:auto;
         text-transform:none; -webkit-font-smoothing:antialiased;
     }
 </style>

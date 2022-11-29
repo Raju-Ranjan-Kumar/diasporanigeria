@@ -6,11 +6,11 @@
         <div class="wrapper">
             <div class="content-wrapper">
                 <section class="content-header">
-                    <h1> Add Business</h1>
+                    <h1> {{page_name}} Business </h1>
                     <ol class="breadcrumb icon-text-center">
                         <li> 
-                            <RouterLink to="#" class="text-size">
-                                <i class='bx bxs-dashboard'></i> <span class="me-2">Home</span> 
+                            <RouterLink to="#" class="text-size d-flex align-items-center">
+                                <i class='bx bxs-dashboard me-1'></i> <span class="me-2">Home</span> 
                             </RouterLink> 
                         </li>
                         <i class='bx bx-chevron-right me-2 text-size'> </i>
@@ -110,6 +110,7 @@
     export default {
         name: "businessAdd",
         components: { Header, Footer, Menu },
+        props:["page_name"],
         data(){
             return{
                 addUpdate:{

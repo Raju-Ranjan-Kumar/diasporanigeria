@@ -11,5 +11,5 @@
 </script>
 
 <style scoped>
-    .main-footer { bottom:0; width:100%; }
+    .main-footer { font-size:14px; }
 </style>

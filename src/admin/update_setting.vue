@@ -9,8 +9,9 @@
                     <div class="row margin-t-b">
                         <div class="col-md-3 listpage"> <h4 class="mb-0"> Update Setting </h4> </div>
                         <div class="col-md-6"> 
-                            <p class="text-center mb-0"> session message 
-                            <span class="box-title"> <strong>Setting updated successfully</strong></span></p> 
+                            <p class="text-center mb-0">
+                                <span class="box-title"> <strong>Setting updated successfully</strong></span>
+                            </p> 
                         </div>
                     </div>
                 </section>

@@ -24,7 +24,7 @@
                             </form>
                         </div>
                         <div class="col-md-2 text-end">
-                            <RouterLink to="/admin/business_addf">
+                            <RouterLink to="/admin/business_addf/add">
                                 <input type="button" value="Add Business" class="btn btn-success add-business"/> 
                             </RouterLink>
                         </div>
@@ -50,13 +50,10 @@
                                                     <span class="ps-2 csr-dflt">entries</span>
                                                 </div>
                                             </div>
-                                            <!-- <div>
-                                                <p>Checkbox value {{check_all}}</p>
-                                            </div> -->
                                             <div class="col-md-3 ms-auto">
                                                 <div class="input-group">
                                                     <span class="pe-2 csr-dflt">Search:</span>
-                                                    <input type="search" class="form-control drop_down">
+                                                    <input type="search" class="form-control drop_down" v-model="searchVal" @input="filter">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +96,7 @@
                                                         </label>
                                                     </td>
                                                     <td class="text-center">
-                                                        <RouterLink to="/admin/business_addf" class="btn btn-primary">
+                                                        <RouterLink to="/admin/business_addf/update" class="btn btn-primary">
                                                             <i class='bx bxs-pencil'></i> 
                                                         </RouterLink>
                                                     </td>
@@ -124,20 +121,40 @@
                                                         </label>
                                                     </td>
                                                     <td class="text-center">
-                                                        <RouterLink to="/admin/business_addf" class="btn btn-primary">
+                                                        <RouterLink to="/admin/business_addf/update" class="btn btn-primary">
                                                             <i class='bx bxs-pencil'></i> 
                                                         </RouterLink>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
+
+                                        <div class="pt-3 d-md-flex justify-content-between align-items-center">
+                                            <div class="text-md-start text-center">
+                                                <p>Showing 1 to 10 of 123 entries</p>
+                                            </div>
+                                            <div>
+                                                <nav aria-label="Page navigation example ms-auto">
+                                                    <ul class="pagination ">
+                                                        <li class="page-item"><RouterLink to="#" class="page-link not-click"> Previous </RouterLink></li>
+                                                        <li class="page-item"><RouterLink to="#" class="page-link"> 1 </RouterLink></li>
+                                                        <li class="page-item"><RouterLink to="#" class="page-link"> 2 </RouterLink></li>
+                                                        <li class="page-item"><RouterLink to="#" class="page-link"> 3 </RouterLink></li>
+                                                        <li class="page-item"><RouterLink to="#" class="page-link not-click"> ... </RouterLink></li>
+                                                        <li class="page-item"><RouterLink to="#" class="page-link"> 10 </RouterLink></li>
+                                                        <li class="page-item"><RouterLink to="#" class="page-link"> Next </RouterLink></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-success btn-sm me-2">Enable</button>
-                                        <button type="submit" class="btn btn-warning btn-sm me-2 text-light">Disable</button>
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="button" class="btn btn-success btn-sm me-2">Enable</button>
+                                        <button type="button" class="btn btn-warning btn-sm me-2 text-light">Disable</button>
+                                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
                                     </div>
                                 </div>
                             </form>
@@ -155,6 +172,7 @@
     import Header from './header.vue';
     import Menu from './menu.vue';
     import Footer from './footer.vue';
+    import axios from 'axios';
 
     export default {
         el : ".squaredFour",
@@ -162,14 +180,32 @@
         components: { Header, Footer, Menu },
         data(){
             return{
-                check_all : [],
+                searchVal:"",
+                tableData:[],
+                check_all:[],
             }
-        }
+        },
+        mounted () {
+            axios.get("http://localhost/diasporanigeria-backend/appdata/webservice.php").then((response) => {
+                console.warn(response);
+                // this.values = response;
+            });
+        },
+        methods:{
+            filter() {
+                if (!this.searchVal) {
+                    this.tableData = this.table.tr.td;
+                } else {
+                    this.tableData = this.table.tr.td.filter(({ td }) =>
+                        (td).toLowerCase().includes(this.searchVal.toLowerCase())
+                    );
+                }
+            },
+        },
     }
 </script>
 
 <style scoped>
-    table th{ font-size:12px; }  
     .listpage h4 { font-size:20px; text-transform:uppercase; font-weight:800;}
     .btn { display:inline-block; padding:4px 8px; margin-bottom:0; font-size:14px; font-weight:normal; line-height:1.42857143;
         text-align:center; white-space:nowrap; vertical-align:middle; cursor:pointer; border:1px solid transparent; border-radius:4px;
@@ -183,5 +219,7 @@
     .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
         border:1px solid #dee2e6;
     }
-    .add-business { font-size:14px; font-weight:bold; padding:6px 8px; }
+    .add-business { font-size:14px; padding:6px 8px; }
+    .not-click { cursor:not-allowed; }
+    .d-md-flex .text-md-start p {font-size:14px; color:#333; }
 </style>

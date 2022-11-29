@@ -16,8 +16,7 @@
                                 <p>Total Users</p>
                             </div>
                             <div class="icon">
-                                <i class='bx bx-group'></i>
-                                <ion-icon name="contact"></ion-icon>
+                                <i class="ph-users-three"></i>
                             </div>
                             <router-link to="" class="small-box-footer">More information <i class='bx bx-right-arrow-circle'></i></router-link>
                         </div>
@@ -78,11 +77,11 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Oladayo</td>
-                                                <td>Success</td>
-                                                <td>kamardeenoladayo@gmail.com</td>
-                                                <td>+27 798328409</td>
-                                                <td>2022-10-06 09:15:01</td>
+                                                <td>Opeoluwa</td>
+                                                <td>Solaja</td>
+                                                <td>adeolaolubusoye@gmail.com</td>
+                                                <td>+1 7806606121</td>
+                                                <td>2022-10-05 12:05:35</td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
@@ -91,14 +90,6 @@
                                                 <td>adeolaolubusoye@gmail.com</td>
                                                 <td>+1 7806606121</td>
                                                 <td>2022-10-05 12:05:35</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Dubaidenis</td>
-                                                <td>Mamba</td>
-                                                <td>dubaidenis@gmail.com</td>
-                                                <td>+1 4253899505</td>
-                                                <td>2022-10-05 03:30:02</td>
                                             </tr>
                                         </tbody>
                                         <tfoot> </tfoot>
@@ -122,6 +113,7 @@
     import Header from './header.vue';
     import Footer from './footer.vue';
     import Menu from './menu.vue';
+    import axios from 'axios';
 
     export default {
         name: "welcomePage",
@@ -130,7 +122,13 @@
             return{
                 isHidden: false,
                 isRemove: false,
+                values: [],
             }
+        },
+        mounted () {
+            axios.post("http://localhost/diasporanigeria-backend/appdata/webservice.php").then((response) => {
+                this.values = response;
+            });
         }
     }
 </script>

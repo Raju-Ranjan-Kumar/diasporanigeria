@@ -22,7 +22,7 @@
                         <router-link to="/forgot_password" class="f-password">Forgot Password?</router-link>
                     </div>
 
-                    <button class="btn hedr-btn" type="submit" v-on:click="submitNumber()">Login</button>
+                    <button class="btn hedr-btn" type="submit" v-on:click="login()">Login</button>
                 </div>
             </div>
         </div>
@@ -37,14 +37,18 @@
         data(){
             return{
                 post:{
-                    errors: {},
                     phone: '',
                     password: '',
+                    country_code: '',
+                    errors: {},
                 }
             }
         },
         methods:{
             onInput(_, phoneObject) {
+                if (phoneObject?.country.dialCode) {
+                    this.post.country_code = '+' + phoneObject?.country.dialCode;
+                }
                 if (phoneObject?.formatted) {
                     this.post.phone = phoneObject.formatted
                 }
@@ -63,11 +67,23 @@
                 }
                 return true;
             },
-            submitNumber() {
+            login() {
                 if (this.validate()) {
-                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
-                        const value = response;
-                        console.warn(value);
+                    this.axios.post("http://localhost/diasporanigeria-backend/appdata/webservice.php", {
+                        login: 1,
+                        device_token: 12345,
+                        device_type: 1,
+                        latitude: 1,
+                        longitude: 1,
+                        country_code: this.post.country_code,
+                        phone: this.post.phone,
+                        password: this.post.password,
+                    }, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    }).then((response) => {
+                        console.warn(response);
                     });
                 }
             }
@@ -76,8 +92,9 @@
 </script>
 
 <style scoped>
-    .vue-tel-input { height:35px; width:205px; font-size:14px; border:1px solid #ced4da; color:#000; background:#fff; }
+    .vue-tel-input { height:35px; width:205px; font-size:14px; border:1px solid #ced4da; border-radius:2px; color:#000; background:#fff; }
+    .navbar-brand { padding:8px 0px; }
     .navbar-collapse { padding:8px 0px; }
-    .btn { --bs-btn-font-size: 1rem; }
-    .mrgn-l-f { margin-left:auto; margin-right:15px;}
+    .btn { --bs-btn-font-size: 1rem;}
+    .mrgn-l-f { margin-left:auto; margin-right:25px;}
 </style>

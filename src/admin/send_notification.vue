@@ -17,24 +17,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Tpye</label>
-                                            <select :class="`form-select select2 ${this.notification.errors.type ? 'is-invalid' : ''}`" v-model="notification.type">
-                                                <option value="">Select Type</option>
-                                                <option value="All">All</option>
-                                                <option value="Individual">Individual</option>
-                                                <option value="IOS Users">IOS Users</option>
-                                                <option value="Android Users">Android Users</option>
-                                            </select>
+                                            <Select2 :options="myOptions" @change="myChangeEvent($event)" @select="mySelectEvent($event)" :class="` ${this.notification.errors.type ? 'is-invalid' : ''}`" v-model="notification.type" placeholder="Select Type"/>
                                             <div class="invalid-feedback"> {{this.notification.errors.type}} </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-6" v-if="notification.type === 'Individual'">
                                         <div class="form-group">
                                             <label>Select Users</label>
-                                            <select :class="`form-select select2 ${this.notification.errors.Users ? 'is-invalid' : ''}`" v-model="notification.Users">
-                                                <option value="">Select User</option>
-                                                <option value="Result">Result</option>
-                                                <option value="Status">Status</option>
-                                            </select>
+                                            <Select2 :options="user_name" @change="myChangeEvent($event)" @select="mySelectEvent($event)" :class="` ${this.notification.errors.Users ? 'is-invalid' : ''}`" v-model="notification.Users" placeholder="Select Users"/>
                                             <div class="invalid-feedback"> {{this.notification.errors.Users}} </div>
                                         </div>
                                     </div>
@@ -43,14 +33,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" :class="`form-control ${this.notification.errors.title ? 'is-invalid' : ''}`" v-model="notification.title">
+                                            <input type="text" :class="`control ${this.notification.errors.title ? 'is-invalid' : ''}`" v-model="notification.title">
                                             <div class="invalid-feedback"> {{this.notification.errors.title}} </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Message</label>
-                                            <textarea rows="5" cols="30" :class="`form-control ${this.notification.errors.message ? 'is-invalid' : ''}`" v-model="notification.message"></textarea>
+                                            <textarea rows="5" cols="30" :class="`control ${this.notification.errors.message ? 'is-invalid' : ''}`" v-model="notification.message"></textarea>
                                             <div class="invalid-feedback"> {{this.notification.errors.message}} </div>
                                         </div>
                                     </div>
@@ -76,10 +66,12 @@
     import Footer from './footer.vue';
     import Menu from './menu.vue';
     import validateNotification from './validation/send_notification';
+    import Select2 from 'vue3-select2-component';
+    import axios from 'axios'
 
     export default {
         name: "sendNotification",
-        components: { Footer, Header, Menu },
+        components: { Footer, Header, Menu, Select2 },
         data(){
             return{
                 notification:{
@@ -88,10 +80,26 @@
                     Users: '',
                     title: '',
                     message: '',
-                }
+                },
+                user_name: [],
+                myOptions: ['Select User', 'All', 'Individual', 'Ios Users', 'Android Users'],
             }
         },
+        mounted () {
+            axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/events").then((response) => {
+                const values = response.data.data;
+                this.user_name = values.map(d => (d.name));
+            }).catch((error) => {
+                console.warn(error);
+            });
+        },
         methods:{
+            myChangeEvent(val){
+                console.log(val);
+            },
+            mySelectEvent({id, text}){
+                console.log({id, text});
+            },
             validate() {
                 const { isInvalid, errors } = validateNotification({
                     type: this.notification.type,
@@ -110,9 +118,9 @@
             },
             sndNotification(){
                 if (this.validate()) {
-                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
-                        const value = response;
-                        console.warn(value);
+                    axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
+                        const values = response.data.data;
+                        console.warn(values);
                     });
                 }
             }
@@ -124,5 +132,5 @@
     label { margin-bottom:5px; font-weight:bold; font-size:14px; }
     .form-group { margin-bottom:12px; }
     .n-message { font-size:14px; color:#a94442 }
-    .form-select option{ font-size:14px; }
+    .control:focus { outline:none; }
 </style>

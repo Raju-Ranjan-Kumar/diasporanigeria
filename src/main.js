@@ -16,6 +16,6 @@ import '../src/assets/css/custom.css';
 
 const app = createApp(App) 
 app.use(router)
-app.use(VueTelInput)
 app.use(VueAxios, axios)
+app.use(VueTelInput)
 app.mount('#app')

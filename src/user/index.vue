@@ -79,6 +79,8 @@
                     lastName: "",
                     email: "",
                     phone: "",
+                    country_code: '',
+                    country: '',
                     password: "",
                     conPassword: "",
                 }
@@ -86,6 +88,10 @@
         },
         methods: {
             onInput(_, phoneObject) {
+                if (phoneObject?.country.dialCode && phoneObject?.country.name) {
+                    this.post.country_code = '+' + phoneObject?.country.dialCode;
+                    this.post.country = phoneObject?.country.name;
+                }
                 if (phoneObject?.formatted) {
                     this.post.phone = phoneObject.formatted
                 }
@@ -109,12 +115,29 @@
             },
             submitData() {
                 if (this.validate()) { 
-                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
-                        const value = response;
-                        console.warn(value);
+                    this.axios.post("http://localhost/diasporanigeria-backend/appdata/webservice.php", {
+                        registration: 1,
+                        state: 'UP',
+                        device_token: 12345,
+                        device_type: 1,
+                        latitude: 1,
+                        longitude: 1,
+                        country: this.post.country,
+                        country_code: this.post.country_code,
+                        first_name: this.post.firstName,
+                        last_name: this.post.lastName,
+                        email: this.post.email,
+                        phone: this.post.phone,
+                        password: this.post.password,
+                        conPassword: this.post.conPassword,
+                    }, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    }).then((response) => {
+                        console.warn(response);
                     });
                 }
-                
             },
         },
     }
