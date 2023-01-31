@@ -11,132 +11,80 @@ import changePassword from './user/change-password'
 import addBusiness from './user/add-business'
 import editProfile from './user/edit-profile'
 import chatPage from './user/chat'
-
-import AdminIndex from './admin/index'
-import welcomePage from './admin/welcome'
-import updateSetting from './admin/update_setting'
-import businessList from './admin/business_list'
-import sendNotification from './admin/send_notification'
-import sendSms from './admin/send_sms'
-import businessAdd from './admin/business_addf'
-import eventsPage from './admin/events'
-import ticketPage from './admin/ticket'
-import eventCrud from './admin/eventCrud'
-import ticketCrud from './admin/ticketCrud'
+import friendRequestSent from './user/friend-request-sent'
+import otpVerification from './user/otp-verification'
+import pageNotFound from './user/pageNotFound'
 
 const routes = [
     {
-        name:indexPage,
+        name:"indexPage",
         path:'/',
         component:indexPage
     },
     {
-        name:forgotPassword,
+        name:"forgotPassword",
         path:'/forgot_password',
         component:forgotPassword
     },
     {
-        name:dashboardPage,
+        name:"dashboardPage",
         path:'/user/dashboard',
         component:dashboardPage,
     },
     {
-        name:userdHeader,
+        name:"userdHeader",
         path:'/user/userheader',
         component:userdHeader,
     },
     {
-        name:userProfile,
+        name:"userProfile",
         path:'/user/userprofile',
         component:userProfile,
     },
     {
-        name:friendRequest,
+        name:"friendRequest",
         path:'/user/friend-request',
         component:friendRequest,
     },
     {
-        name:myProfile,
+        name:"myProfile",
         path:'/user/my-profile',
         component:myProfile,
     },
     {
-        name:changePassword,
+        name:"changePassword",
         path:'/user/change-password',
         component:changePassword,
     },
     {
-        name:addBusiness,
+        name:"addBusiness",
         path:'/user/add-business',
         component:addBusiness,
     },
     {
-        name:editProfile,
+        name:"editProfile",
         path:'/user/edit-profile',
         component:editProfile,
     },
     {
-        name:chatPage,
+        name:"chatPage",
         path:'/user/chat',
         component:chatPage,
     },
     {
-        name:AdminIndex,
-        path:'/admin',
-        component:AdminIndex
+        name:"friendRequestSent",
+        path:'/user/friend-request-sent',
+        component:friendRequestSent,
     },
     {
-        name:welcomePage,
-        path:'/admin/welcome',
-        component:welcomePage
+        name:"otpVerification",
+        path:'/user/otp-verification',
+        component:otpVerification,
     },
     {
-        name:updateSetting,
-        path:'/admin/update_setting',
-        component:updateSetting
-    },
-    {
-        name:businessList,
-        path:'/admin/business_list',
-        component:businessList
-    },
-    {
-        name:sendNotification,
-        path:'/admin/send_notification',
-        component:sendNotification
-    },
-    {
-        name:sendSms,
-        path:'/admin/send_sms',
-        component:sendSms
-    },
-    {
-        name:businessAdd,
-        path:'/admin/business_addf/:page_name',
-        component:businessAdd,
-        props:true
-    },
-    {
-        name:eventsPage,
-        path:'/admin/events',
-        component:eventsPage
-    },
-    {
-        name:ticketPage,
-        path:'/admin/ticket',
-        component:ticketPage
-    },
-    {
-        name:eventCrud,
-        path:'/admin/event-crud/:h_name',
-        component:eventCrud,
-        props:true
-    },
-    {
-        name:ticketCrud,
-        path:'/admin/ticket-crud/:heading_name',
-        component:ticketCrud,
-        props:true
+        name:"pageNotFound",
+        path:'/:pathMatch(.*)*',
+        component:pageNotFound,
     },
 ];
 

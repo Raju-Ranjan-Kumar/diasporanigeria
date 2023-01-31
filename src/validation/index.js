@@ -21,11 +21,11 @@ const validateregister = (data) => {
     if(validator.isEmpty(email)) {
         errors.email = "*Email is required"
     }else if(!validator.isEmail(email)){
-        errors.email = "*Please enter a valid email address"
+        errors.email = "*Please enter a valid email"
     }
     
     if(validator.isEmpty(phone)) {
-        errors.phone = "*Please enter phone number"
+        errors.phone = "*Phone number is required"
     }
 
     if(validator.isEmpty(password)) {

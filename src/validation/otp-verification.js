@@ -1,11 +1,14 @@
 import validator from "validator";
 
-const valFrgtPassword = (data) => {
+const verifyOtp = (data) => {
     let errors = {};
-    const { email } = data
+    const { email,otp } = data
 
     if(validator.isEmpty(email)) {
         errors.email = "*Email is required"
+    }
+    if(validator.isEmpty(otp)) {
+        errors.otp = "*Otp is required"
     }
 
     return{
@@ -14,4 +17,4 @@ const valFrgtPassword = (data) => {
     };
 }
 
-export default valFrgtPassword;
+export default verifyOtp;

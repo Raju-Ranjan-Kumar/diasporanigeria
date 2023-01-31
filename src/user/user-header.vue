@@ -1,101 +1,129 @@
 <template>
-    <nav class="user-hed">
+    <nav class="header">
         <div class="cant">
-            <div class="cant-2">
-                <div>
-                    <router-link to="/user/dashboard" class="navbar-brand">
-                        <img class="hedr-logo" src="../assets/images/logo.jpg">
-                    </router-link>
+            <div :class="['cant-2', menuOpen ? 'menu-open' : '']">
+                <div :class="['tgle-cant', bdrBtm ? 'bdr-btm' : '']">
+                    <div class="tgle-img">
+                        <router-link to="/user/dashboard" class="navbar-brand">
+                            <img class="he-logo" src="../assets/images/logo.jpg">
+                        </router-link>
+                    </div>
+
+                    <div class="toggle-content">
+                        <button class="tgle-btn" v-on:click="toggleMenu()">
+                            <i class='bx bx-menu tgle-icon'></i>
+                        </button>
+                    </div>
                 </div>
 
-                <div>
-                    <ul class="d-flex list-stl-none mb-0">
-                        <li class="mx-3 m-auto"><RouterLink to="/user/dashboard" class="icon-text-center"> <i class='bx bx-home h-icon'></i> </RouterLink></li>
-                        <li class="mx-3 m-auto "><RouterLink to="/user/friend-request" class="position-relative icon-text-center">
-                            <i class='bx bx-user-plus h-icon'></i> <span class="notification-count">10</span></RouterLink>
-                        </li>
-                        <li class="mx-3 m-auto"><RouterLink to="/user/chat" class="icon-text-center"> <i class='bx bx-message-rounded-dots h-icon'></i> </RouterLink></li>
-                        <li class="mx-3 m-auto">
-                            <RouterLink to="#" class="nav-link dropdown-toggle icon-text-center icon-del" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class='bx bx-bell h-icon'></i>
-                            </RouterLink>
-                            <ul class="dropdown-menu notification-hedr" aria-labelledby="navbarDropdown">
-                                <div class="not-drop"> Notification </div>
-                                <li>
-                                    <div class="card-head dropdown-item">
-                                        <div class="notification-img">
-                                            <img class="not-img" src="../assets/images/pic2.jpg">
-                                        </div>
-                                        <div class="card-body">
-                                            <strong class="not-name"> Raju Ranjan </strong>
-                                            <div class="not-text"> Kayode has sent to you a friend request </div>
-                                            <small class="not-date"> 22-jun-2020 </small>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-head dropdown-item">
-                                        <div class="notification-img">
-                                            <img class="not-img" src="../assets/images/pic2.jpg">
-                                        </div>
-                                        <div class="card-body">
-                                            <strong class="not-name"> Raju Ranjan </strong>
-                                            <div class="not-text"> Kayode has sent to you a friend request </div>
-                                            <small class="not-date"> 22-jun-2020 </small>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-head dropdown-item">
-                                        <div class="notification-img">
-                                            <img class="not-img" src="../assets/images/pic2.jpg">
-                                        </div>
-                                        <div class="card-body">
-                                            <strong class="not-name"> Raju Ranjan </strong>
-                                            <div class="not-text"> Kayode has sent to you a friend request </div>
-                                            <small class="not-date"> 22-jun-2020 </small>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-head dropdown-item">
-                                        <div class="notification-img">
-                                            <img class="not-img" src="../assets/images/pic2.jpg">
-                                        </div>
-                                        <div class="card-body">
-                                            <strong class="not-name"> Raju Ranjan </strong>
-                                            <div class="not-text"> Kayode has sent to you a friend request </div>
-                                            <small class="not-date"> 22-jun-2020 </small>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="search-box-hedr">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search" @input="filter" v-model="search">
+                    <i class='bx bx-search search-icon'></i>
                 </div>
 
-                <div id="navbarSupportedContent">
-                    <form class="d-flex align-items-center">
-                        <div class="search-box-hedr">
-                            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                            <i class='bx bx-search search-icon'></i>
-                        </div>
-                        <ul class="list-stl-none mb-0">
-                            <li class="nav-item dropdown">
-                                <router-link to="#" class="nav-link dropdown-toggle icon-text-center" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="img-circle me-1" src="../assets/images/pic2.jpg">
-                                    <span> User Name </span>
-                                </router-link>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><router-link to="/user/my-profile" class="dropdown-item">My Profile</router-link></li>
-                                    <li><router-link to="/user/change-password" class="dropdown-item">Change Password</router-link></li>
-                                    <li><router-link to="/user/add-business" class="dropdown-item">Add Business</router-link></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><router-link to="#" class="dropdown-item">Logout</router-link></li>
-                                </ul>
+                <div class="profile-section">
+                    <div id="navContent">
+                        <ul class="d-flex list-stl-none mb-0">
+                            <li class="mid-icon"><RouterLink to="/user/dashboard" class="icon-text-center"> <i class='bx bx-home h-icon'></i> </RouterLink></li>
+                            <li class="mid-icon"><RouterLink to="/user/friend-request" class="position-relative icon-text-center">
+                                <i class='bx bx-user-plus h-icon'></i> <span class="notification-count">10</span></RouterLink>
+                            </li>
+                            <li class="mid-icon"><RouterLink to="/user/chat" class="icon-text-center"> <i class='bx bx-message-rounded-dots h-icon'></i> </RouterLink></li>
+                            <li class="mid-icon">
+                                <RouterLink to="#" class="nav-link dropdown-toggle icon-text-center icon-del" role="button">
+                                    <i class='bx bx-bell h-icon' v-on:click="activeDropDown = activeDropDown === 'notification' ? null : 'notification'"></i>
+                                </RouterLink>
+                                <div class="not-container" v-if="activeDropDown === 'notification'">
+                                    <div class="not-cant">
+                                        <div class="not-info"> Notification </div>
+                                        <div class="not-menu-link">
+                                            <div class="notification-img">
+                                                <img class="not-img" src="../assets/images/pic1.jpg">
+                                            </div>
+                                            <div>
+                                                <strong class="not-name"> Raju Ranjan </strong>
+                                                <div class="not-text"> Kayode has sent to you a friend request </div>
+                                                <small class="not-date"> 22-jun-2020 </small>
+                                            </div>
+                                        </div>
+                                        <div class="not-menu-link">
+                                            <div class="notification-img">
+                                                <img class="not-img" src="../assets/images/pic2.jpg">
+                                            </div>
+                                            <div>
+                                                <strong class="not-name"> Raju Ranjan </strong>
+                                                <div class="not-text"> Kayode has sent to you a friend request </div>
+                                                <small class="not-date"> 22-jun-2020 </small>
+                                            </div>
+                                        </div>
+                                        <div class="not-menu-link">
+                                            <div class="notification-img">
+                                                <img class="not-img" src="../assets/images/pic3.jpg">
+                                            </div>
+                                            <div>
+                                                <strong class="not-name"> Raju Ranjan </strong>
+                                                <div class="not-text"> Kayode has sent to you a friend request </div>
+                                                <small class="not-date"> 22-jun-2020 </small>
+                                            </div>
+                                        </div>
+                                        <div class="not-menu-link">
+                                            <div class="notification-img">
+                                                <img class="not-img" src="../assets/images/pic4.jpg">
+                                            </div>
+                                            <div>
+                                                <strong class="not-name"> Raju Ranjan </strong>
+                                                <div class="not-text"> Kayode has sent to you a friend request </div>
+                                                <small class="not-date"> 22-jun-2020 </small>
+                                            </div>
+                                        </div>
+                                        <div class="not-menu-link">
+                                            <div class="notification-img">
+                                                <img class="not-img" src="../assets/images/pic4.jpg">
+                                            </div>
+                                            <div>
+                                                <strong class="not-name"> Raju Ranjan </strong>
+                                                <div class="not-text"> Kayode has sent to you a friend request </div>
+                                                <small class="not-date"> 22-jun-2020 </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="mid-icon">
+                                <img src="../assets/images/pic4.jpg" alt="" class="user-pic icon-text-center" v-on:click="activeDropDown = activeDropDown === 'profile' ? null : 'profile'">
+                                <div class="sub-menu-wrap" v-if="activeDropDown === 'profile'">
+                                    <div class="sub-menu">
+                                        <div class="user-info">
+                                            <img src="../assets/images/pic4.jpg" alt="">
+                                            <p> {{ user_data.firstname }} {{ user_data.lastname }} </p>
+                                        </div>
+                                        <hr>
+                                        <router-link to="/user/my-profile" class="sub-menu-link">
+                                            <i class='bx bxs-user'></i>
+                                            <p> My Profile </p>
+                                            <span> > </span>
+                                        </router-link>
+                                        <router-link to="/user/add-business" class="sub-menu-link">
+                                            <i class='bx bxs-briefcase'></i>
+                                            <p> Add Business </p>
+                                            <span> > </span>
+                                        </router-link>
+                                        <router-link to="/user/change-password" class="sub-menu-link">
+                                            <i class='bx bxs-lock'></i>
+                                            <p> Change Password </p>
+                                            <span> > </span>
+                                        </router-link>
+                                        <hr>
+                                        <router-link to="#" class="sub-menu-link" v-on:click="logout">
+                                            <i class='bx bxs-log-in'></i>
+                                            <p> Logout </p>
+                                            <span> > </span>
+                                        </router-link>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,33 +133,74 @@
 <script>
     export default {
         name: "userdHeader",
+        data() {
+            return {
+                menuOpen: false,
+                bdrBtm: false,
+                activeDropDown:null,
+                user_data : {},
+                search:'',
+                eventValue: [],
+                eventData: []
+            }
+        },
+        methods: {
+            toggleMenu() {
+                this.menuOpen = !this.menuOpen,
+                this.bdrBtm = !this.bdrBtm
+            },
+            filter() {
+                if (!this.search) {
+                    this.eventData = this.eventValue;
+                } else {
+                    this.eventData = this.eventValue.filter(({ firstname, lastname }) =>
+                        (firstname).toLowerCase().includes(this.search.toLowerCase()) || (lastname).toLowerCase().includes(this.search.toLowerCase()) 
+                    );
+                }
+            },
+            logout() {
+                localStorage.removeItem('token');
+                this.$router.push("/");
+            }
+        },
+        mounted () {
+            const token = JSON.parse(localStorage.getItem('token'));
+            const id = JSON.parse(localStorage.getItem('id'));
+
+            if (!token) {
+                this.$router.push("/");
+            }
+
+            this.axios.post("https://api2.diasporanigeria.org/api/get-user", {
+                id: Number(id),
+            },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${token}`
+                }
+            }).then((response) => {
+                this.user_data = response.data?.data
+            });
+
+            // this.axios.post("https://api2.diasporanigeria.org/api/search", {
+            //     search: this.search,
+            // }, {
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Authorization': 'Bearer ' + (localStorage.getItem('token') || '')
+            //     }
+            // }).then((response) => {
+            //     console.log(response)
+            //     this.eventValue = response.data.data;
+            //     this.eventData = [...this.eventValue];
+            // });
+        },
     }
 </script>
 
 <style scoped>
-    .user-hed { background-color:white; box-shadow:0px 0px 10px #c7c9c8; }
-    .cant { margin:0px 45px;}
-    .cant-2 { display:flex; justify-content:space-between; align-items:center; padding:5px 0px; }
-    .hedr-logo { width:115px; height:85px; }
-    .list-stl-none { text-decoration:none; list-style:none; padding-left:1rem; }
-    .h-icon { color:grey; font-size:25px;  }
-    .h-icon:hover { color:#03a559; }
-    .notification-count { position:absolute; font-size:10px; padding:2px 3px; border:1px solid #03a559; border-radius:50%; background-color:#03a559; color:white; top:-13px; left:16px; }
-    .icon-del::after { display:none; }
-    .search-box-hedr { background-color:#ece9eb; padding:0px 6px; display:flex; align-items:center; height:36px; width:12rem; border-radius:2rem !important; border:1px solid #ced4da; }
-    .search-box-hedr input { border:none;  outline:none; background-color:#ece9eb; }
+    .search-box-hedr { background-color:#ece9eb; padding:0px 10px; display:flex; align-items:center; height:35px; width:30%; border-radius:2rem !important; border:1px solid #ced4da; }
+    .search-box-hedr input { background-color:#ece9eb; border:none; outline:none; padding:0px 10px; border-radius:2rem !important; }
     .search-box-hedr input:focus { outline:0px !important; box-shadow:none !important}
-    .search-icon { font-size:18px; cursor:pointer; padding-right:6px; font-weight:bold;}
-    .img-circle { height:35px; width:35px; border-radius:50%; }
-    .dropdown-toggle::after{ vertical-align:middle; }
-    a { text-decoration:none; }
-    .not-drop { border-radius:3px 3px 0px 0px; box-shadow:0px 0px 14px #cacdcc; padding:10px 15px; color:#000; font-size:18px; }
-    .notification-hedr { transform:translate(535px, 65px) !important; overflow:auto; max-height:335px; }
-    .not-img { height:70px; width:70px; border-radius:50%; }
-    .card-head { width:22rem; display:flex; border-bottom:1px solid #ced4da; padding:2px 5px; }
-    .notification-img { padding:6px; }
-    .card-body { padding:6px 15px; }
-    .not-name { color:#31708f; font-size:13px; }
-    .not-text { color:#000; font-size:13px; line-height:15px; white-space:pre-line; }
-    .not-date { color:#8a6d3b; font-size:11px; }
+    .profile-section { flex:1; min-width:100px; display:flex; justify-content:flex-end; }
 </style>

@@ -2,13 +2,13 @@
     <Header></Header>
 
     <div class="main">
-        <div class="row align-item-center">
-            <div class="col-7 leftDiv">
-                <p class="fw-bold">DIASPORA NIGERIA IS AN ONLINE REALTIME PLATFORM FOR <br> NIGERIANS IN THE DIASPORA .</p>
-                <span> Meet Nigerians With Common Interests In Your Location </span>
+        <div class="signup-cant">
+            <div class="leftDiv">
+                <p> DIASPORA NIGERIA IS AN ONLINE REALTIME PLATFORM FOR NIGERIANS IN THE DIASPORA .</p>
+                <div> Meet Nigerians With Common Interests In Your Location </div>
             </div>
             
-            <div class="col-5 loginformmain">
+            <div class="loginformmain">
                 <div class="login">
                     <div class="backdiv">
                         <router-link to="/" class="back-p icon-text-center">
@@ -21,15 +21,16 @@
                     <div class="contant">
                         <div class="forgottext">
                             <h2 class="forgot-pas">Forgot Your Password</h2>
-                            <p> Enter the mobile number associated with your account, and we'll help you get your password reset.</p>
+                            <p> Enter the email associated with your account, and we'll help you get your password reset.</p>
                         </div>
-                        <form @submit.prevent="submitPhone" @input="validate" method="post" novalidate>
-                            <div class="input-group mb-4">
-                                <vue-tel-input :class="`number-input ${this.forgot.errors.phone ? 'is-invalid' : ''}`" v-model="forgot.phone" @input="onInput"></vue-tel-input>
-                                <div class="invalid-feedback"> {{this.forgot.errors.phone}} </div>
+                        <form @submit.prevent="forgotPsd" @input="validate" method="post" novalidate>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class='bx bxs-envelope box-icon'></i></span>
+                                <input type="email" :class="`form-control input-radius ${this.forgot.errors.email ? 'is-invalid' : ''}`" placeholder="Email" v-model="forgot.email">
+                                <div class="invalid-feedback"> {{this.forgot.errors.email}} </div>
                             </div>
-                            <div class="d-grid gap-2 col-12 mx-auto mb-4">
-                                <button class="btn btn-success fw-bold" type="submit">Next</button>
+                            <div class="next">
+                                <button class="btn btn-success bttn-f" type="submit"> Next </button>
                             </div>
                         </form>
                     </div>
@@ -49,23 +50,18 @@
     export default {
         name: 'forgotPassword',
         components: { Header, Footer },
-        data(){
-            return{
-                forgot:{
+        data() {
+            return {
+                forgot: {
                     errors: {},
-                    phone: '',
+                    email: '',
                 }
             }
         },
         methods:{
-            onInput(_, phoneObject) {
-                if (phoneObject?.formatted) {
-                    this.forgot.phone = phoneObject.formatted
-                }
-            },
             validate() {
                 const {isInvalid, errors} = valFrgtPassword({
-                    phone: this.forgot.phone,
+                    email: this.forgot.email,
                 });
 
                 if (isInvalid) {
@@ -76,11 +72,18 @@
                 }
                 return true;
             },
-            submitPhone() {
+            forgotPsd() {
                 if (this.validate()) {
-                    this.axios.get("https://diasporanigeria.org/diaspora/diasporanigeria-admin/public/api/ticket/5").then((response) => {
-                        const value = response;
-                        console.warn(value);
+                    this.axios.post("https://api2.diasporanigeria.org/api/forgotpassword-send-request", {
+                        email: this.forgot.email,
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + (localStorage.getItem('token') || '')
+                        }
+                    }).then((response) => {
+                        console.warn(response);
+                        this.$router.push("/user/otp-verification");
                     });
                 }
             }
@@ -89,5 +92,6 @@
 </script>
 
 <style scoped>
-    .btn { border-radius:0.375rem; }
+    .bx { font-size:18px; }
+    .next { width:100%; font-weight:bold; margin:1rem 0px; }
 </style>

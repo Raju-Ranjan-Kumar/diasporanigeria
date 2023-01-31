@@ -3,79 +3,66 @@
 
     <section id="connect">
         <div class="container">
-            <div class="card user-profile">
-                <div class="profile-img-cant">
-                    <img src="../assets/images/pic2.jpg" class="profile-img" alt="profile-image">
-                </div>
-                <div class="card-body">
-                    <ul class="list">
-                        <li><RouterLink to="/user/my-profile" class="active"> My Profile </RouterLink></li>
-                        <li><RouterLink to="/user/edit-profile"> Edit Profile </RouterLink></li>
-                        <li><RouterLink to="/user/add-business"> Add Business </RouterLink></li>
-                        <li><RouterLink to="/user/change-password"> Change Password </RouterLink></li>
-                        <li><RouterLink to=""> Logout </RouterLink></li>
-                    </ul>
-                </div>
-            </div>
+            <profilePage></profilePage>
 
-            <div class="card profile-detail">
-                <div class="add-business">
-                    <div class="change-pass me-3">
-                        <p class="card-text"> Business Image </p>
-                        <div class="input-group">
-                            <!-- <span class="input-group-text"><i class='bx bxs-image-alt password-icon'></i></span> -->
-                            <input type="file" class="form-control">
+            <div class="card profile-detail business-add">
+                <form action="#" method="post" @input="validateBusiness" @submit.prevent="Business">
+                    <div class="">
+                        <div class="add-business">
+                            <div class="change-pass">
+                                <p class="card-text"> Business Image </p>
+                                <div class="input-group">
+                                    <input type="file" :class="`form-control input-radius ${this.validate.errors.image ? 'is-invalid' : ''}`" @change="onFileChange" multiple>
+                                    <div class="invalid-feedback"> {{this.validate.errors.image}} </div>
+                                </div>
+                            </div>
+                            <div class="change-pass">
+                                <p class="card-text"> Business Name </p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class='bx bxs-briefcase password-icon'></i></span>
+                                    <input type="text" :class="`form-control input-radius ${this.validate.errors.name ? 'is-invalid' : ''}`" placeholder="Business Name" v-model="validate.name">
+                                    <div class="invalid-feedback"> {{this.validate.errors.name}} </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-business">
+                            <div class="change-pass">
+                                <p class="card-text"> Category </p>
+                                <Select2 :options="myOptions" placeholder="Category" :class="`${this.validate.errors.category ? 'is-invalid' : ''}`" v-model="validate.category"/>
+                                <div class="invalid-feedback"> {{this.validate.errors.category}} </div>
+                            </div>
+                            <div class="change-pass">
+                                <p class="card-text"> Address </p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class='bx bxs-map-pin password-icon'></i></span>
+                                    <input type="text" :class="`form-control input-radius ${this.validate.errors.address ? 'is-invalid' : ''}`" placeholder="Address" v-model="validate.address">
+                                    <div class="invalid-feedback"> {{this.validate.errors.address}} </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-business">
+                            <div class="change-pass">
+                                <p class="card-text"> Enter Location </p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class='bx bxs-map password-icon'></i></span>
+                                    <input type="text" :class="`form-control input-radius ${this.validate.errors.location ? 'is-invalid' : ''}`" placeholder="Location" v-model="validate.location">
+                                    <div class="invalid-feedback"> {{this.validate.errors.location}} </div>
+                                </div>
+                            </div>
+                            <div class="change-pass">
+                                <p class="card-text"> Website </p>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class='bx bx-globe password-icon'></i></span>
+                                    <input type="text" :class="`form-control input-radius ${this.validate.errors.website ? 'is-invalid' : ''}`" placeholder="Website" v-model="validate.website">
+                                    <div class="invalid-feedback"> {{this.validate.errors.website}} </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid mx-auto save-business">
+                            <button class="btn btn-success" type="submit"> Save </button>
                         </div>
                     </div>
-                    <div class="change-pass">
-                        <p class="card-text"> Business Name </p>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class='bx bxs-briefcase password-icon'></i></span>
-                            <input type="text" class="form-control" placeholder="Business Name">
-                        </div>
-                    </div>
-                </div>
-                <div class="add-business">
-                    <div class="change-pass me-3">
-                        <p class="card-text"> Category </p>
-                        <select class="form-select drop_down" name="category">
-                            <option value="">Category</option>
-                            <option value="ENTERTAINMENT">ENTERTAINMENT</option>
-                            <option value="FOOD AND AGRICULTURE">FOOD AND AGRICULTURE</option>
-                            <option value="LEGAL">LEGAL</option>
-                            <option value="OIL, GAS, ENERGY AND MINERALS">OIL, GAS, ENERGY AND MINERALS</option>
-                            <option value="ORGANIZATION/AGENCIES">ORGANIZATION/AGENCIES</option>
-                            <option value="RELIGION">RELIGION</option>
-                            <option value="TRADE">TRADE</option>
-                        </select>
-                    </div>
-                    <div class="change-pass">
-                        <p class="card-text"> Address </p>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class='bx bxs-map-pin password-icon'></i></span>
-                            <input type="text" class="form-control" placeholder="Address">
-                        </div>
-                    </div>
-                </div>
-                <div class="add-business">
-                    <div class="change-pass me-3">
-                        <p class="card-text"> Enter Location </p>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class='bx bxs-map password-icon'></i></span>
-                            <input type="text" class="form-control" placeholder="Location">
-                        </div>
-                    </div>
-                    <div class="change-pass">
-                        <p class="card-text"> Website </p>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class='bx bx-globe password-icon'></i></span>
-                            <input type="text" class="form-control" placeholder="Website">
-                        </div>
-                    </div>
-                </div>
-                <div class="d-grid col-6 mx-auto">
-                    <button class="btn btn-success" type="button"> Save </button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -86,28 +73,69 @@
 <script>
     import userdHeader from './user-header.vue'
     import footerPage from './footer.vue'
+    import profilePage from './profile.vue'
+    import Select2 from 'vue3-select2-component';
+    import valAddBusiness from '../validation/add-business.js';
 
     export default {
         name: "addBusiness",
-        components: { userdHeader, footerPage },
+        components: { userdHeader, footerPage, profilePage, Select2 },
+        data() {
+            return {
+                myOptions: [ "ENTERTAINMENT", "FOOD AND AGRICULTURE", "LEGAL", "OIL, GAS, ENERGY AND MINERALS",
+                    "ORGANIZATION/AGENCIES", "TRADE", "RELIGION"
+                ],
+                validate: {
+                    image: '',
+                    name: '',
+                    category: '',
+                    address: '',
+                    location: '',
+                    website: '',
+                    errors: {},
+                }
+            };
+        },
+        methods: {
+            onFileChange(event){
+                this.validate.image = event.target.files.length ? event.target.files[0] : ''
+
+                // if(this.validate.image.type == 'application/pdf'){
+                //     return true
+                // }else{
+                //     return false
+                // }
+            },
+            validateBusiness() {
+                const {isInvalid, errors} = valAddBusiness({
+                    image: this.validate.image,
+                    name: this.validate.name,
+                    category: this.validate.category,
+                    address: this.validate.address,
+                    location: this.validate.location,
+                    website: this.validate.website,
+                });
+
+                if (isInvalid) {
+                    this.validate.errors = errors;
+                    return false;
+                }else {
+                    this.validate.errors = {}
+                }
+                return true;
+            },
+            Business() {
+                if (this.validateBusiness()) {
+                    alert("DOne")
+                }
+            }
+        }
     }
 </script>
 
 <style scoped>
-    #connect { width:100%; height:auto; background:#efefef; padding:30px 0px; }
     .container { width:100%; padding:10px; display:flex; }
-    .user-profile { width:30%; margin-right:20px; }
-    .profile-img-cant { text-align:center; box-shadow:0px 0px 2px #e4e7e6; padding:20px; }
-    .profile-img { height:200px; width:200px; border-radius:50%; }
-    .card-body ul li { list-style:none; margin-bottom:5px;}
-    .card-body ul li a { padding:9px 15px; color:#000; font-size:14px; display:inline-block; width:100%; text-decoration:none; border-radius:0.150rem; }
-    .card-body ul li a:hover { background:#03a559; color:#fff; }
-    .card-body ul li .active { background:#03a559; color:#fff; }
-    .list { padding:0; }
-    .profile-detail { width:70%; padding:30px 50px; }
-    .add-business { display:flex; width:100%; }
-    .change-pass { padding-bottom:25px; width:100%; }
-    .password-icon { color:#03a559; font-size:20px; }
+    .business-add { width:70%; padding:2rem; }
     .card-text { margin-bottom:5px; text-transform:uppercase; color:#666; font-weight:600; }
-    .btn-success { font-weight:bold; border-radius:0.375rem; }
+    .btn-success { font-weight:bold; border-radius:1.5rem; }
 </style>
